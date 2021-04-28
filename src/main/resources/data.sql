@@ -1,12 +1,11 @@
 
-
+--USESRS--
 -- Contraseña: Admin1
 insert into users (id, full_name, email, username, password, avatar, created_at, last_password_change_at,enabled) 
 values (1, 'Admin admin', 'admin@hotmail.com','admin','$2a$10$DBJhFdEGTeAqoLLsGfXwYObYXpt/amU0wpsRtKQtwJdC5n.MOXgxC','',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,true);
     
 insert into user_entity_roles (user_entity_id, roles) values (1,'USER');
 insert into user_entity_roles (user_entity_id, roles) values (1,'ADMIN');
-
 
 -- Contraseña: Marialopez1
 insert into users (id, full_name, email, username, password, avatar, created_at, last_password_change_at,enabled) 
@@ -86,3 +85,120 @@ insert into users (id, full_name, email, username, password, avatar, created_at,
 values (15, 'Manuel kito', 'manukit@hotmail.com','manukit@hotmail.com','$2a$10$DBJhFdEGTeAqoLLsGfXwYObYXpt/amU0wpsRtKQtwJdC5n.MOXgxC','',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,true);
       
 insert into user_entity_roles (user_entity_id, roles) values (15,'USER');
+-- USESRS --
+
+-- CUSTOMERS --
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
+values (1, 'sebastian', 'sangermano', '1999-02-09', '41616608','seba_sanger@hotmail.com','402641','3755309633','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
+values (2, 'gabriel', 'ramirez', '1997-10-10', '405080','Ramirez@hotmail.com','868686','3755309633','123123123', '1231231231' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
+values (3, 'raul', 'ramirez', '1880-09-12', '404050','raul@hotmail.com','5656456','3755309633','12312323', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
+values (4, 'carlos', 'suarez', '1990-08-23', '201045','carlos@hotmail.com','456456456','123123123','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
+values (5, 'antonio', 'roman', '1960-07-11', '201010','antonio@hotmail.com','45678642','456456456','20416166081', '123123123' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
+values (6, 'rodrigo', 'graziosetti', '1996-06-17', '506070','rodrigo@hotmail.com','456456678','456456456','20416166081', '543453453' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
+values (7, 'alberto', 'torresetti', '1989-05-18', '124578','alberto@hotmail.com','456456456','456456456','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
+values (8, 'ramiro', 'montenegro', '1989-04-23', '123653','ramiro@hotmail.com','78978456','456456456','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
+values (9, 'juan', 'valdez', '1999-06-24', '859621','juan@hotmail.com','45645646','86786786','20416166081', '453453453' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
+values (10, 'manuel', 'lopez', '1978-08-16', '535655','manuel@hotmail.com','78678676','786786786','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
+values (11, 'paco', 'antunez', '1987-04-25', '8545735','paco@hotmail.com','456456546','8767867867','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+-- CUSTOMERS --
+
+-- CUSTOMERS --
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
+values (1, '101', 1, 1, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
+values (2, '102', 2, 1, 2, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
+values (3, '103', 3, 1, 1, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
+values (4, '104', 4, 1, 2, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
+values (5, '105', 1, 1, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
+values (6, '201', 1, 2, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
+values (7, '202', 2, 2, 0, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
+values (8, '203', 3, 2, 1, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
+values (9, '204', 4, 2, 0, 2, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
+values (10, '205', 2, 2, 2, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+-- ROOMS --
+
+-- STAYS --
+--1
+insert into stays (id, room_id, active, entry_date, out_date, check_in, check_out, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
+values (1, 1, false,'2021-04-27', '2021-04-28', '2021-04-27', '2021-04-28', 2800, 1400 , 2800 , 1 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers_stays (stay_id, customer_id) 
+values (1, 2);
+
+--2
+
+insert into stays (id, room_id, active, entry_date, out_date, check_in, check_out, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
+values (2, 2, false,'2021-04-26', '2021-04-28', '2021-04-26', '2021-04-28', 6000, 2000 , 6000 , 2,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers_stays (stay_id, customer_id) 
+values (2, 2);
+insert into customers_stays (stay_id, customer_id) 
+values (2, 3);
+
+--3
+
+insert into stays (id, room_id, active, entry_date, out_date, check_in, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
+values (3, 3, true,'2021-04-27', '2021-04-29', '2021-04-27', 7500, 2500, 8000 , 3 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers_stays (stay_id, customer_id) 
+values (3, 4);
+insert into customers_stays (stay_id, customer_id) 
+values (3, 5);
+insert into customers_stays (stay_id, customer_id) 
+values (3, 6);
+
+--4
+
+insert into stays (id, room_id, active, entry_date, out_date, check_in, check_out, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
+values (4, 6, false,'2021-04-25', '2021-04-27', '2021-04-25', '2021-04-27', 3000, 3000 , 1500 , 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers_stays (stay_id, customer_id) 
+values (4, 8);
+
+--5
+
+insert into stays (id, room_id, active, entry_date, out_date, check_in, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
+values (5, 7, true,'2021-04-28', '2021-04-29', '2021-04-28' , 4000, 2000 , 4000 , 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers_stays (stay_id, customer_id) 
+values (5, 9);
+insert into customers_stays (stay_id, customer_id) 
+values (5, 10);
+-- STAYS --
