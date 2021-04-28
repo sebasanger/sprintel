@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -20,7 +22,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "customers")
@@ -52,6 +56,9 @@ public class Customer {
     private String cuit;
 
     @ManyToMany(mappedBy = "customers")
+    @JsonBackReference
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Set<Stay> stays;
 
     @Column(unique = true)

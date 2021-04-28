@@ -44,7 +44,7 @@ public class UserController {
 	private final UserEntityService userEntityService;
 	private final UserDtoConverter userDtoConverter;
 
-	@GetMapping("/")
+	@GetMapping("")
 	public ResponseEntity<?> getUsers() {
 		List<UserEntity> result = userEntityService.findAll();
 
