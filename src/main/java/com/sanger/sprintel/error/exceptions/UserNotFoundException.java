@@ -2,9 +2,6 @@ package com.sanger.sprintel.error.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -2730111931833397903L;
 
 	public UserNotFoundException() {

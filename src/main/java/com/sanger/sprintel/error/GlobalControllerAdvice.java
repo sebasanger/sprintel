@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.sanger.sprintel.error.exceptions.LoteNotFoundException;
+import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
+import com.sanger.sprintel.error.exceptions.FindEntityByIdNotFoundException;
 import com.sanger.sprintel.error.exceptions.NewUserWithDifferentPasswordsException;
 import com.sanger.sprintel.error.exceptions.PasswordNotMismatch;
-import com.sanger.sprintel.error.exceptions.ProductoNotFoundException;
-import com.sanger.sprintel.error.exceptions.SearchProductoNoResultException;
+import com.sanger.sprintel.error.exceptions.SearchEntityNoResultException;
 import com.sanger.sprintel.error.exceptions.UserNotFoundException;
 
 import org.springframework.http.HttpHeaders;
@@ -24,9 +24,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestControllerAdvice
 public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
 
-	@ExceptionHandler({ ProductoNotFoundException.class, SearchProductoNoResultException.class,
-			UserNotFoundException.class, LoteNotFoundException.class })
-	public ResponseEntity<ApiError> handleNoEncontrado(Exception ex) {
+	@ExceptionHandler({ EntityNotFoundException.class, SearchEntityNoResultException.class, UserNotFoundException.class,
+			FindEntityByIdNotFoundException.class })
+	public ResponseEntity<ApiError> handleNotFound(Exception ex) {
 		ApiError apiError = new ApiError(HttpStatus.NOT_FOUND, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
 	}
