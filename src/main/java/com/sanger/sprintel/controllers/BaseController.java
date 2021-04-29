@@ -2,6 +2,8 @@ package com.sanger.sprintel.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.services.base.BaseService;
 
@@ -10,17 +12,23 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
-public abstract class BaseController<M, ID, S extends BaseService<M, ID, ?>> {
+public abstract class BaseController<E, ID, S extends BaseService<E, ID, ?>> {
 
 	@Autowired
 	protected S service;
 
 	@GetMapping("")
 	public ResponseEntity<?> getUsers() {
-		List<M> result = service.findAll();
+		List<E> result = service.findAll();
 
 		if (result.isEmpty()) {
 			throw new EntityNotFoundException();
@@ -33,13 +41,37 @@ public abstract class BaseController<M, ID, S extends BaseService<M, ID, ?>> {
 	public ResponseEntity<?> paginatedList(
 			@PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
 
-		Page<M> result = service.findAll(pageable);
+		Page<E> result = service.findAll(pageable);
 
 		if (result.isEmpty()) {
 			throw new EntityNotFoundException();
 		} else {
 			return ResponseEntity.ok().body(result);
 		}
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<?> findUserById(@PathVariable ID id) {
+		E result = service.findById(id).orElseThrow(() -> new EntityNotFoundException());
+		return ResponseEntity.ok().body(result);
+	}
+
+	@PostMapping("")
+	public ResponseEntity<E> create(@Valid @RequestBody E newEntity) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(newEntity));
+	}
+
+	@PutMapping("")
+	public ResponseEntity<E> update(@Valid @RequestBody E entity) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.update(entity));
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> borrarUsuario(@PathVariable ID id) {
+		E entity = service.findById(id).orElseThrow(() -> new EntityNotFoundException());
+		service.delete(entity);
+		return ResponseEntity.noContent().build();
+
 	}
 
 }

@@ -40,7 +40,6 @@ public class Stay {
     private Long id;
 
     @ManyToMany
-    @JsonManagedReference
     @JoinTable(name = "customers_stays", joinColumns = @JoinColumn(name = "stay_id"), inverseJoinColumns = @JoinColumn(name = "customer_id"))
     private Set<Customer> customers;
 

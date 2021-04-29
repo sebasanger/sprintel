@@ -75,7 +75,6 @@ public class UserController {
 		UserEntity result = userEntityService.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 		GetUserDetailsDto user = userDtoConverter.convertUserEntityToGetUserDetailsDto(result);
 		return ResponseEntity.ok().body(user);
-
 	}
 
 	@PostMapping("")
@@ -102,11 +101,10 @@ public class UserController {
 	public ResponseEntity<GetUsersDto> updateUser(@Valid @RequestBody ChangeUserPassword user) {
 		return ResponseEntity.status(HttpStatus.OK)
 				.body(userDtoConverter.convertUserEntityToGetUserDto(userEntityService.updatePassword(user)));
-
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> borrarUsuario(@PathVariable Long id) {
+	public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
 
 		UserEntity user = userEntityService.findById(id).orElseThrow(() -> new UserNotFoundException(id));
 
