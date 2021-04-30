@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -55,7 +56,7 @@ public class Customer {
 
     private String cuit;
 
-    @ManyToMany(mappedBy = "customers")
+    @ManyToMany(mappedBy = "customers", cascade = CascadeType.ALL)
     @JsonBackReference
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
