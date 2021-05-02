@@ -3,7 +3,6 @@ package com.sanger.sprintel.model;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,12 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import lombok.AllArgsConstructor;
@@ -45,11 +41,18 @@ public class Stay {
     @ManyToMany(cascade = CascadeType.MERGE)
     @NotNull
     @JoinTable(name = "customers_stays", joinColumns = @JoinColumn(name = "stay_id"), inverseJoinColumns = @JoinColumn(name = "customer_id"))
-    private Set<Customer> customers;
+    private Set<@Valid @NotNull Customer> customers;
 
     @NotNull
     @ManyToOne()
     private Room room;
+
+    @ManyToOne()
+    private Reason reason;
+
+    @NotNull
+    @ManyToOne()
+    private RoomPrice roomPrice;
 
     @NotNull
     @Column(nullable = false)

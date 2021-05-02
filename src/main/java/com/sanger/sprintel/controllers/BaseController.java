@@ -37,7 +37,7 @@ public abstract class BaseController<E, ID, S extends BaseService<E, ID, ?>> {
 		}
 	}
 
-	@GetMapping("/pageable")
+	@GetMapping("/paginated")
 	public ResponseEntity<?> paginatedList(
 			@PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
 
