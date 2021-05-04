@@ -6,6 +6,7 @@ import java.util.Set;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.model.Payment;
 import com.sanger.sprintel.model.PaymentMethod;
+import com.sanger.sprintel.model.Register;
 import com.sanger.sprintel.model.Stay;
 import com.sanger.sprintel.model.UserEntity;
 import com.sanger.sprintel.repository.PaymentRepository;
@@ -21,6 +22,7 @@ public class PaymentService extends BaseService<Payment, Long, PaymentRepository
     private final StayService stayService;
     private final UserEntityService userEntityService;
     private final PaymentMethodService paymentMethodService;
+    private final RegisterService registerService;
 
     public Optional<Set<Payment>> findByStay(Long stayId) {
         Stay stay = stayService.findById(stayId).orElseThrow(() -> new EntityNotFoundException());
@@ -34,6 +36,12 @@ public class PaymentService extends BaseService<Payment, Long, PaymentRepository
         UserEntity user = userEntityService.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));
         payment.setUser(user);
+
+        // Set register by id
+        Long registerId = payment.getUser().getId();
+        Register register = registerService.findById(registerId)
+                .orElseThrow(() -> new EntityNotFoundException("Register not found"));
+        payment.setRegister(register);
 
         // Set stay by id
         Long stayId = payment.getUser().getId();

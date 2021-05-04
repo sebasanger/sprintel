@@ -19,6 +19,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -52,6 +55,7 @@ public class Stay {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "stay_id")
+    @JsonManagedReference(value = "stay-payment")
     private Set<Payment> payments;
 
     @ManyToOne()
