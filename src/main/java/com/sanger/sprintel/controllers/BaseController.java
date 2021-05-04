@@ -27,7 +27,7 @@ public abstract class BaseController<E, ID, S extends BaseService<E, ID, ?>> {
 	protected S service;
 
 	@GetMapping("")
-	public ResponseEntity<?> getUsers() {
+	public ResponseEntity<?> getAll() {
 		List<E> result = service.findAll();
 
 		if (result.isEmpty()) {
@@ -38,7 +38,7 @@ public abstract class BaseController<E, ID, S extends BaseService<E, ID, ?>> {
 	}
 
 	@GetMapping("/paginated")
-	public ResponseEntity<?> paginatedList(
+	public ResponseEntity<?> getAllPaginated(
 			@PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
 
 		Page<E> result = service.findAll(pageable);
@@ -51,7 +51,7 @@ public abstract class BaseController<E, ID, S extends BaseService<E, ID, ?>> {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<?> findUserById(@PathVariable ID id) {
+	public ResponseEntity<?> findById(@PathVariable ID id) {
 		E result = service.findById(id).orElseThrow(() -> new EntityNotFoundException());
 		return ResponseEntity.ok().body(result);
 	}
@@ -67,7 +67,7 @@ public abstract class BaseController<E, ID, S extends BaseService<E, ID, ?>> {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> borrarUsuario(@PathVariable ID id) {
+	public ResponseEntity<Void> delete(@PathVariable ID id) {
 		E entity = service.findById(id).orElseThrow(() -> new EntityNotFoundException());
 		service.delete(entity);
 		return ResponseEntity.noContent().build();
