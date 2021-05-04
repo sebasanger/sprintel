@@ -8,13 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "payments")
@@ -30,6 +33,9 @@ public class Payment {
 
     @ManyToOne()
     @NotNull
+    @JsonBackReference
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Stay stay;
 
     @ManyToOne()

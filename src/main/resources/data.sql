@@ -204,35 +204,35 @@ values (11, 'paco', 'antunez', '1987-04-25', '8545735','paco@hotmail.com','45645
 -- CUSTOMERS --
 
 -- ROOMS --
-insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
-values (1, '101', 1, 1, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
+values (1, '101', 1, 1, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
-insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
-values (2, '102', 2, 1, 2, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
+values (2, '102', 2, 1, 2, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
-insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
-values (3, '103', 3, 1, 1, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
+values (3, '103', 3, 1, 1, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
-insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
-values (4, '104', 4, 1, 2, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
+values (4, '104', 4, 1, 2, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
-insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
-values (5, '105', 1, 1, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
+values (5, '105', 1, 1, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
-insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
-values (6, '201', 1, 2, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
+values (6, '201', 1, 2, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
-insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
-values (7, '202', 2, 2, 0, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
+values (7, '202', 2, 2, 0, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
-insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
-values (8, '203', 3, 2, 1, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
+values (8, '203', 3, 2, 1, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
-insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
-values (9, '204', 4, 2, 0, 2, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
+values (9, '204', 4, 2, 0, 2, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
-insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
-values (10, '205', 2, 2, 2, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
+values (10, '205', 2, 2, 2, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 -- ROOMS --
 
 

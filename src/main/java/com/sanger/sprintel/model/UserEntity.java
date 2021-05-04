@@ -27,6 +27,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "users")
@@ -49,6 +50,7 @@ public class UserEntity implements UserDetails {
 	@Column(unique = true)
 	private String username;
 
+	@ToString.Exclude
 	private String password;
 
 	private String avatar;
@@ -105,10 +107,6 @@ public class UserEntity implements UserDetails {
 		return true;
 	}
 
-	/**
-	 * No vamos a gestionar el bloqueo de cuentas. De hacerse, se tendría que dar
-	 * cuerpo a este método
-	 */
 	@Override
 	public boolean isEnabled() {
 		return this.enabled;

@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,10 +46,12 @@ public class Stay {
     private Set<@Valid @NotNull Customer> customers;
 
     @NotNull
-    @ManyToOne()
+    @ManyToOne
+    @JoinColumn(name = "room_id")
     private Room room;
 
-    @OneToMany(mappedBy = "stay")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "stay_id")
     private Set<Payment> payments;
 
     @ManyToOne()

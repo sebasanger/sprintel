@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -27,6 +29,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@SQLDelete(sql = "UPDATE rooms SET deleted=true WHERE id = ?")
+@Where(clause = "deleted = false")
 public class Room {
 
     @Id
@@ -54,6 +58,8 @@ public class Room {
     private boolean available;
 
     private boolean enabled;
+
+    private Boolean deleted;
 
     @CreatedDate
     private LocalDateTime createdAt;
