@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -46,6 +47,9 @@ public class Stay {
     @NotNull
     @ManyToOne()
     private Room room;
+
+    @OneToMany(mappedBy = "stay")
+    private Set<Payment> payments;
 
     @ManyToOne()
     private Reason reason;

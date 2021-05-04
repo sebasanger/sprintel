@@ -86,9 +86,91 @@ values (15, 'Manuel kito', 'manukit@hotmail.com','manukit@hotmail.com','$2a$10$D
 insert into user_entity_roles (user_entity_id, roles) values (15,'USER');
 -- USESRS --
 
+
+-- ROOM PRICES --
+
+insert into room_prices (id, price ,description, created_at, updated_at) 
+values (1, 1200, "Habitacion single",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into room_prices (id, price ,description, created_at, updated_at) 
+values (2, 2000, "Habitacion doble",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into room_prices (id, price ,description, created_at, updated_at) 
+values (3, 2800, "Habitacion triple",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into room_prices (id, price ,description, created_at, updated_at) 
+values (4, 3500, "Habitacion cuadruple",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into room_prices (id, price ,description, created_at, updated_at) 
+values (5, 1000, "Habitacion single viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into room_prices (id, price ,description, created_at, updated_at) 
+values (6, 1700, "Habitacion doble viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into room_prices (id, price ,description, created_at, updated_at) 
+values (7, 2500, "Habitacion triple viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+insert into room_prices (id, price ,description, created_at, updated_at) 
+values (8, 3000, "Habitacion cuadruple viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+
+-- ROOM PRICES --
+
+-- INVOICE TYPES --
+
+insert into invoice_types (id, type) 
+values (1, "Factura A");
+
+insert into invoice_types (id, type) 
+values (2, "Factura B");
+
+insert into invoice_types (id, type) 
+values (3, "Factura C");
+
+-- INVOICE TYPES --
+
+-- PAYMENT METHODS --
+
+insert into payment_methods (id, method, amount_of_payments, description, created_at, updated_at) 
+values (1, "Efectivo", 1, "Pago en efectivo", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into payment_methods (id, method, amount_of_payments, description, created_at, updated_at) 
+values (2, "Tarjeta de debito", 1, "Pago con tarjeta de debito", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into payment_methods (id, method, amount_of_payments, description, created_at, updated_at) 
+values (3, "Tarjeta de credito", 1, "Pago con tarjeta de credito a una cuouta con interes del 15%", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into payment_methods (id, method, amount_of_payments, description, created_at, updated_at) 
+values (4, "Tarjeta de credito", 3, "Pago con tarjeta de credito a tres cuoutas con interes del 20%", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into payment_methods (id, method, amount_of_payments, description, created_at, updated_at) 
+values (5, "Tarjeta de credito", 6, "Pago con tarjeta de credito a seis cuoutas con interes del 20%", CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- PAYMENT METHODS --
+
+
+
+-- REASONS --
+
+insert into reasons (id, reason) 
+values (1, "Viaje de negocios");
+
+insert into reasons (id, reason) 
+values (2, "Fiesta del inmigrante");
+
+insert into reasons (id, reason) 
+values (3, "Tour");
+
+insert into reasons (id, reason) 
+values (4, "Turismo");
+
+insert into reasons (id, reason) 
+values (5, "Otros");
+
+-- REASONS --
+
 -- CUSTOMERS --
-insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
-values (1, 'sebastian', 'sangermano', '1999-02-09', '41616608','seba_sanger@hotmail.com','402641','3755309633','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at, invoice_type_id) 
+values (1, 'sebastian', 'sangermano', '1999-02-09', '41616608','seba_sanger@hotmail.com','402641','3755309633','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
 values (2, 'gabriel', 'ramirez', '1997-10-10', '405080','Ramirez@hotmail.com','868686','3755309633','123123123', '1231231231' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
@@ -96,8 +178,8 @@ values (2, 'gabriel', 'ramirez', '1997-10-10', '405080','Ramirez@hotmail.com','8
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
 values (3, 'raul', 'ramirez', '1880-09-12', '404050','raul@hotmail.com','5656456','3755309633','12312323', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
-values (4, 'carlos', 'suarez', '1990-08-23', '201045','carlos@hotmail.com','456456456','123123123','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at, invoice_type_id) 
+values (4, 'carlos', 'suarez', '1990-08-23', '201045','carlos@hotmail.com','456456456','123123123','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
 values (5, 'antonio', 'roman', '1960-07-11', '201010','antonio@hotmail.com','45678642','456456456','20416166081', '123123123' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
@@ -108,8 +190,8 @@ values (6, 'rodrigo', 'graziosetti', '1996-06-17', '506070','rodrigo@hotmail.com
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
 values (7, 'alberto', 'torresetti', '1989-05-18', '124578','alberto@hotmail.com','456456456','456456456','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
-values (8, 'ramiro', 'montenegro', '1989-04-23', '123653','ramiro@hotmail.com','78978456','456456456','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at, invoice_type_id) 
+values (8, 'ramiro', 'montenegro', '1989-04-23', '123653','ramiro@hotmail.com','78978456','456456456','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
 values (9, 'juan', 'valdez', '1999-06-24', '859621','juan@hotmail.com','45645646','86786786','20416166081', '453453453' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
@@ -121,7 +203,7 @@ insert into customers (id, name, surname, birthday,dni, email, phone, celphone, 
 values (11, 'paco', 'antunez', '1987-04-25', '8545735','paco@hotmail.com','456456546','8767867867','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 -- CUSTOMERS --
 
--- CUSTOMERS --
+-- ROOMS --
 insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at) 
 values (1, '101', 1, 1, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
@@ -153,53 +235,6 @@ insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, 
 values (10, '205', 2, 2, 2, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 -- ROOMS --
 
--- ROOM PRICES --
-
-insert into room_prices (id, price ,description, created_at, updated_at) 
-values (1, 1200, "Habitacion single",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
-
-insert into room_prices (id, price ,description, created_at, updated_at) 
-values (2, 2000, "Habitacion doble",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
-
-insert into room_prices (id, price ,description, created_at, updated_at) 
-values (3, 2800, "Habitacion triple",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
-
-insert into room_prices (id, price ,description, created_at, updated_at) 
-values (4, 3500, "Habitacion cuadruple",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
-
-insert into room_prices (id, price ,description, created_at, updated_at) 
-values (5, 1000, "Habitacion single viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
-
-insert into room_prices (id, price ,description, created_at, updated_at) 
-values (6, 1700, "Habitacion doble viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
-
-insert into room_prices (id, price ,description, created_at, updated_at) 
-values (7, 2500, "Habitacion triple viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
-
-insert into room_prices (id, price ,description, created_at, updated_at) 
-values (8, 3000, "Habitacion cuadruple viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
-
--- ROOM PRICES --
-
-
--- REASONS --
-
-insert into reasons (id, reason) 
-values (1, "Viaje de negocios");
-
-insert into reasons (id, reason) 
-values (2, "Fiesta del inmigrante");
-
-insert into reasons (id, reason) 
-values (3, "Tour");
-
-insert into reasons (id, reason) 
-values (4, "Turismo");
-
-insert into reasons (id, reason) 
-values (5, "Otros");
-
--- REASONS --
 
 -- STAYS --
 --1
@@ -234,7 +269,7 @@ values (3, 6);
 --4
 
 insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, check_out, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
-values (4, 6, 3, 4, false,'2021-04-25', '2021-04-27', '2021-04-25', '2021-04-27', 3000, 3000 , 1500 , 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (4, 6, 3, 4, false,'2021-04-25', '2021-04-27', '2021-04-25', '2021-04-27', 3000, 1500 , 4500 , 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (4, 8);
@@ -250,3 +285,34 @@ insert into customers_stays (stay_id, customer_id)
 values (5, 10);
 -- STAYS --
 
+-- PAYMENT STAYS --
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id) 
+values (1, 1, 2400, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1);
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id) 
+values (2, 2, 3000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2);
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id) 
+values (3, 2, 3000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3);
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id) 
+values (4, 3, 7000, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3);
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id) 
+values (5, 3, 500, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2);
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id) 
+values (6, 4, 1000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1);
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id) 
+values (7, 4, 1000, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1);
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id) 
+values (8, 4, 1000, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1);
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id) 
+values (9, 5, 4000, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3);
+
+
+-- PAYMENT STAYS --
