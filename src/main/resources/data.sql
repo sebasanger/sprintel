@@ -128,6 +128,67 @@ values (3, "Factura C");
 
 -- INVOICE TYPES --
 
+-- BRANDS --
+
+insert into brands (id, brand) 
+values (1, "Cocacola");
+
+insert into brands (id, brand) 
+values (2, "Pepsi");
+
+insert into brands (id, brand) 
+values (3, "Manaos");
+
+insert into brands (id, brand) 
+values (4, "Sindor");
+
+insert into brands (id, brand) 
+values (5, "Dolca");
+
+insert into brands (id, brand) 
+values (6, "Elaboracion propia");
+
+-- BRANDS --
+
+-- CATEGORIES --
+
+insert into categories (id, category) 
+values (1, "Bebidas");
+
+insert into categories (id, category) 
+values (2, "Comidas");
+
+insert into categories (id, category) 
+values (3, "Miselaneos");
+
+-- CATEGORIES --
+
+-- PRODUCTS --
+
+insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
+values (1, "Cocacola 1L", 80, "bzx852", 5, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
+values (2, "Cocacola 2L", 120, "kjkszpj", 3, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
+values (3, "Pepsi 1L", 75, "aezakmi", 4, 1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
+values (4, "Pepsi 2L", 110, "fullclip", 2, 1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
+values (5, "Chocolatada", 70, "rocketman", 4, 1, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
+values (6, "Sadnwich completo", 90, "naturaltalent", 2,  2, 6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
+values (7, "LLavero", 150, "hesoiam", 20,  3, 6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- PRODUCTS --
+
+
 -- PAYMENT METHODS --
 
 insert into payment_methods (id, method, amount_of_payments, description, created_at, updated_at) 
