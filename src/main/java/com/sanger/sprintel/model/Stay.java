@@ -58,6 +58,11 @@ public class Stay {
     @JsonManagedReference(value = "stay-payment")
     private Set<Payment> payments;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "stay_id")
+    @JsonManagedReference(value = "stay-consumption")
+    private Set<Consumption> consumptions;
+
     @ManyToOne()
     private Reason reason;
 
