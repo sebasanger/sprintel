@@ -1,7 +1,7 @@
 package com.sanger.sprintel.model;
 
 import java.time.LocalDateTime;
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -11,43 +11,37 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "products")
+@Table(name = "entry_products")
 @Data
 @EntityListeners(AuditingEntityListener.class)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class EntryProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private Short amount;
 
-    private Double price;
+    private Double buyPrice;
 
+    @ManyToOne
     @NotNull
-    @Column(nullable = false, unique = true)
-    private String code;
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "category_id", nullable = true)
-    private Category category;
-
-    @ManyToOne(optional = true)
-    @JoinColumn(name = "brand_id", nullable = true)
-    private Brand brand;
-
-    private Short stock;
+    @ManyToOne()
+    @NotNull
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     @CreatedDate
     private LocalDateTime createdAt;

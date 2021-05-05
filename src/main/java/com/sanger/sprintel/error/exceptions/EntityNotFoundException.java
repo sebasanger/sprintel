@@ -1,6 +1,9 @@
 package com.sanger.sprintel.error.exceptions;
 
 public class EntityNotFoundException extends RuntimeException {
+
+    private static final long serialVersionUID = 1L;
+
     public EntityNotFoundException() {
         super("No results can be found");
     }

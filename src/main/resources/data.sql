@@ -188,6 +188,28 @@ values (7, "LLavero", 150, "hesoiam", 20,  3, 6, CURRENT_TIMESTAMP, CURRENT_TIME
 
 -- PRODUCTS --
 
+-- ENTRY PRODUCTS --
+
+insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
+values (1, 1, 3, 50, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
+values (2, 2, 5, 90, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
+values (3, 4, 1, 45, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
+values (4, 3, 3, 70, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
+values (5, 1, 6, 56, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
+values (6, 1, 2, 54, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+-- ENTRY PRODUCTS --
+
 
 -- PAYMENT METHODS --
 
