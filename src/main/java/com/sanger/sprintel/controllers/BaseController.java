@@ -61,8 +61,8 @@ public abstract class BaseController<E, ID, S extends BaseService<E, ID, ?>> {
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.save(newEntity));
 	}
 
-	@PutMapping("")
-	public ResponseEntity<E> update(@Valid @RequestBody E entity) {
+	@PutMapping({ "", "/{id}" })
+	public ResponseEntity<E> update(@Valid @RequestBody E entity, @PathVariable(required = false) Long id) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(service.update(entity));
 	}
 
