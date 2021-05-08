@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/invoice-type")
+@RequestMapping("/invoice")
 @RequiredArgsConstructor
 public class InvoiceTypeController extends BaseController<InvoiceType, Long, InvoiceTypeService> {
 
