@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/room-price")
+@RequestMapping("/roomprice")
 @RequiredArgsConstructor
 public class RoomPriceController extends BaseController<RoomPrice, Long, RoomPriceService> {
 
