@@ -14,6 +14,7 @@ import com.sanger.sprintel.error.exceptions.SearchEntityNoResultException;
 import com.sanger.sprintel.error.exceptions.UserNotFoundException;
 
 import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -61,6 +62,16 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
 		if (error.startsWith("Cannot delete")) {
 			apiError.setMessage("can't delete this item, it has related items");
 		}
+
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+
+	}
+
+	@ExceptionHandler({ DataIntegrityViolationException.class })
+	public ResponseEntity<ApiError> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
+
+		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST,
+				ex.getMostSpecificCause().getMessage() + " constrain validation exception");
 
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 

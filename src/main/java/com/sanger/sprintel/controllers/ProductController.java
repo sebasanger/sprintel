@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 public class ProductController extends BaseController<Product, Long, ProductService> {
     private final ProductService productService;
 
-    @PostMapping("/save")
+    @PostMapping("/")
     public ResponseEntity<Product> create(@Valid @RequestBody Product newProduct) {
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.saveProduct(newProduct));
     }
