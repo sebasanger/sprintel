@@ -1,5 +1,7 @@
 package com.sanger.sprintel.services;
 
+import com.sanger.sprintel.dto.customer.CheckDniIsValidDto;
+import com.sanger.sprintel.dto.user.CheckEmailIsValidDto;
 import com.sanger.sprintel.model.Customer;
 import com.sanger.sprintel.repository.CustomerRepository;
 import com.sanger.sprintel.services.base.BaseService;
@@ -14,5 +16,15 @@ public class CustomerService extends BaseService<Customer, Long, CustomerReposit
         return this.repository
                 .findByNameIgnoreCaseContainingOrSurnameIgnoreCaseContainingOrEmailIgnoreCaseContainingOrDniIgnoreCaseContaining(
                         filter, filter, filter, filter, pageable);
+    }
+
+    public boolean checkEmailIsValid(CheckEmailIsValidDto checkEmailIsValidDto) {
+        return this.repository.findByEmailAndIdNot(checkEmailIsValidDto.getEmail(), checkEmailIsValidDto.getId())
+                .isPresent();
+
+    }
+
+    public boolean checkDniIsValid(CheckDniIsValidDto checkDniIsValidDto) {
+        return this.repository.findByDniAndIdNot(checkDniIsValidDto.getDni(), checkDniIsValidDto.getId()).isPresent();
     }
 }
