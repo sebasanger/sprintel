@@ -28,7 +28,7 @@ public class CustomerController extends BaseController<Customer, Long, CustomerS
 
     @GetMapping("/paginate-filter")
     public ResponseEntity<?> paginateAndFilterCustomers(
-            @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
+            @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.DESC) Pageable pageable,
             @RequestParam(defaultValue = "") String filter) {
         Page<Customer> result = customerService.filterAndPaginateCustomer(filter, pageable);
 
