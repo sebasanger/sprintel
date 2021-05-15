@@ -2,6 +2,7 @@ package com.sanger.sprintel.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -29,12 +30,13 @@ public class EntryProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Column(nullable = false)
     private Short amount;
 
     private Double buyPrice;
 
     @ManyToOne
-    @NotNull
     @JoinColumn(name = "user_id")
     private UserEntity user;
 

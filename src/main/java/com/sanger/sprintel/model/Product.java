@@ -54,4 +54,17 @@ public class Product {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public void addStock(short amount) {
+        this.stock = (short) (this.stock + amount);
+    }
+
+    public void removeStock(short amount) {
+        this.stock = (short) (this.stock - amount);
+    }
+
+    public void updateStock(short amount) {
+        this.stock = (short) (this.stock + amount);
+    }
+
 }
