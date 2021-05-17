@@ -1,6 +1,9 @@
 package com.sanger.sprintel.model;
 
 import java.time.LocalDateTime;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -8,8 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.UpdateTimestamp;
@@ -46,6 +52,11 @@ public class Product {
     @ManyToOne(optional = true)
     @JoinColumn(name = "brand_id", nullable = true)
     private Brand brand;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @NotNull
+    @JoinTable(name = "products_images", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "image_id"))
+    private Set<@Valid @NotNull Image> images;
 
     private Short stock;
 
