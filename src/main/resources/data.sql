@@ -313,11 +313,11 @@ values (9, '204', 4, 2, 0, 2, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, 
 insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
 values (10, '205', 2, 2, 2, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
-insert into images (id ,path, type, size) 
-values (1, 'asd.jpeg', "jpeg", 200);
+insert into images (id ,path, type, size, title) 
+values (1, 'asd.jpeg', "jpeg", 200, "Vista de afuera");
 
-insert into images (id ,path, type, size) 
-values (2, 'pasda.png', "png", 250);
+insert into images (id ,path, type, size, title) 
+values (2, 'pasda.png', "png", 250, "Cama principal");
 
 
 insert into rooms_images (room_id ,image_id) 

@@ -1,11 +1,14 @@
 package com.sanger.sprintel.services;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.sanger.sprintel.controllers.FilesController;
 import com.sanger.sprintel.dto.user.ChangeImageResponseDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
+import com.sanger.sprintel.model.Image;
 import com.sanger.sprintel.model.Room;
 import com.sanger.sprintel.repository.RoomRepository;
 import com.sanger.sprintel.services.base.BaseService;
@@ -26,6 +29,8 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
 
     private final StorageService storageService;
 
+    private final ImageService imageService;
+
     public ChangeImageResponseDto uploadAvatarAndDeleteOld(MultipartFile file, Long id) {
         System.out.println(file.getContentType());
         if (file.isEmpty()) {
@@ -36,21 +41,38 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
             throw new StorageException("Image type error");
         }
 
-        String urlImage = null;
-
         String image = storageService.store(file);
-        urlImage = MvcUriComponentsBuilder.fromMethodName(FilesController.class, "serveFile", image, null).build()
-                .toUriString();
+        String urlImage = MvcUriComponentsBuilder.fromMethodName(FilesController.class, "serveFile", image, null)
+                .build().toUriString();
 
         Room room = this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
 
-        // this.deleteRoomImageIfExist(room);
+        Set<Image> images = new HashSet<>();
 
-        // room.setImage(urlImage);
+        images.add(new Image(urlImage));
+
+        room.setImages(images);
 
         this.save(room);
 
         return new ChangeImageResponseDto(room.getId(), urlImage);
+
+    }
+
+    public void deleteImage(Long roomId, Long imageId) {
+        Image image = imageService.findById(imageId).orElseThrow(() -> new EntityNotFoundException("Image not found"));
+
+        Room room = this.repository.findById(roomId).orElseThrow(() -> new EntityNotFoundException("Room not found"));
+
+        storageService.delete(image.getPath());
+
+        Set<Image> images = room.getImages();
+
+        images.remove(image);
+
+        this.save(room);
+
+        this.imageService.delete(image);
 
     }
 

@@ -26,8 +26,14 @@ public class Image {
     @Column(nullable = false, unique = true)
     private String path;
 
-    private Double size;
+    private int size;
 
     private String type;
+
+    public Image(@NotNull String path) {
+        this.path = path;
+    }
+
+    public String title;
 
 }
