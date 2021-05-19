@@ -25,8 +25,9 @@ public class RoomController extends BaseController<Room, Long, RoomService> {
 
     @PutMapping(value = "/upload/image/{id}")
     public ResponseEntity<ChangeImageResponseDto> nuevoProducto(@RequestParam("file") MultipartFile file,
-            @PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(roomService.uploadAvatarAndDeleteOld(file, id));
+            @RequestParam("title") String title, @PathVariable Long id) {
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(roomService.uploadAvatarAndDeleteOld(file, id, title));
 
     }
 

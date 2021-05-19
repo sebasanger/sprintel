@@ -30,10 +30,11 @@ public class Image {
 
     private String type;
 
-    public Image(@NotNull String path) {
-        this.path = path;
-    }
-
     public String title;
+
+    public Image(@NotNull String path, String title) {
+        this.path = path;
+        this.title = title;
+    }
 
 }

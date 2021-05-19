@@ -31,7 +31,7 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
 
     private final ImageService imageService;
 
-    public ChangeImageResponseDto uploadAvatarAndDeleteOld(MultipartFile file, Long id) {
+    public ChangeImageResponseDto uploadAvatarAndDeleteOld(MultipartFile file, Long id, String title) {
         System.out.println(file.getContentType());
         if (file.isEmpty()) {
             throw new StorageException("Image not found");
@@ -46,10 +46,14 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
                 .build().toUriString();
 
         Room room = this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+        Set<Image> images;
+        if (room.getImages() == null) {
+            images = new HashSet<>();
+        } else {
+            images = room.getImages();
+        }
 
-        Set<Image> images = new HashSet<>();
-
-        images.add(new Image(urlImage));
+        images.add(new Image(urlImage, title));
 
         room.setImages(images);
 
