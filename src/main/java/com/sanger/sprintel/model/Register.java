@@ -47,8 +47,6 @@ public class Register {
 
     private Double balance;
 
-    private LocalDateTime openTime;
-
     private LocalDateTime closeTime;
 
     private Boolean active;
