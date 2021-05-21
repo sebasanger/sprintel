@@ -331,23 +331,23 @@ values (1, 2);
 -- ROOMS --
 
 -- REGISTERS --
-insert into registers (id, user_id, open_mount, balance, open_time, close_time, active, created_at, updated_at) 
-values (1, 1, 5000, 7000 , CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at, close_mount) 
+values (1, 1, 5000, 7000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 800);
 
-insert into registers (id, user_id, open_mount, balance, open_time, close_time, active, created_at, updated_at) 
-values (2, 3, 8000, 5000 , CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at, close_mount) 
+values (2, 3, 8000, 5000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1200);
 
-insert into registers (id, user_id, open_mount, balance, open_time, close_time, active, created_at, updated_at) 
-values (3, 5, 200, 600 , CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at, close_mount) 
+values (3, 5, 200, 600 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2000);
 
-insert into registers (id, user_id, open_mount, balance, open_time, close_time, active, created_at, updated_at) 
-values (4, 2, 10000, 18000 , CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at, close_mount) 
+values (4, 2, 10000, 18000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2800);
 
-insert into registers (id, user_id, open_mount, balance, open_time, close_time, active, created_at, updated_at) 
-values (5, 3, 15000, 12000 , CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at, close_mount) 
+values (5, 3, 15000, 12000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 900);
 
-insert into registers (id, user_id, open_mount, balance, open_time, close_time, active, created_at, updated_at) 
-values (6, 1, 2500, 4500 , CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at) 
+values (6, 1, 2500, 4500 , CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- REGISTERS --
 

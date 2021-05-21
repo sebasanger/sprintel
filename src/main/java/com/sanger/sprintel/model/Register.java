@@ -43,6 +43,8 @@ public class Register {
 
     private Double openMount;
 
+    private Double closeMount;
+
     private Double balance;
 
     private LocalDateTime openTime;
