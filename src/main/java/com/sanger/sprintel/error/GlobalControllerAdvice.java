@@ -10,6 +10,8 @@ import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.error.exceptions.FindEntityByIdNotFoundException;
 import com.sanger.sprintel.error.exceptions.NewUserWithDifferentPasswordsException;
 import com.sanger.sprintel.error.exceptions.PasswordNotMismatch;
+import com.sanger.sprintel.error.exceptions.RegisterNotClosedException;
+import com.sanger.sprintel.error.exceptions.RegisterNotOpenException;
 import com.sanger.sprintel.error.exceptions.SearchEntityNoResultException;
 import com.sanger.sprintel.error.exceptions.UserNotFoundException;
 
@@ -37,6 +39,12 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
 
 	@ExceptionHandler({ NewUserWithDifferentPasswordsException.class, PasswordNotMismatch.class })
 	public ResponseEntity<ApiError> handleBadRequest(Exception ex) {
+		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
+	}
+
+	@ExceptionHandler({ RegisterNotClosedException.class, RegisterNotOpenException.class })
+	public ResponseEntity<ApiError> handleRegisterErrors(Exception ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);
 	}
