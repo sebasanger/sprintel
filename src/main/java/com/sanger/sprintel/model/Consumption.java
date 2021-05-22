@@ -51,8 +51,14 @@ public class Consumption {
     private Stay stay;
 
     @ManyToOne
-    @JoinColumn(name = "register_id")
+    @JsonBackReference(value = "consumtion-register")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Register register;
+
+    @ManyToOne
+    @NotNull
+    private PaymentMethod paymentMethod;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

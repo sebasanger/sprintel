@@ -55,6 +55,10 @@ public class Register {
     @JsonManagedReference(value = "payment-register")
     private Set<Payment> payments;
 
+    @OneToMany(mappedBy = "register")
+    @JsonManagedReference(value = "consumption-register")
+    private Set<Consumption> consumptions;
+
     @CreatedDate
     private LocalDateTime createdAt;
 
