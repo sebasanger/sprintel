@@ -21,6 +21,7 @@ public class GetUserDetailsDto {
     private String avatar;
     private String fullName;
     private String email;
+    private String invoiceType;
     private Set<String> roles;
     private boolean enabled;
     private LocalDateTime createdAt;
