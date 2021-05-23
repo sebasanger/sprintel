@@ -47,7 +47,7 @@ public class PaymentController extends BaseController<Payment, Long, PaymentServ
     }
 
     @GetMapping("/paginate-filter")
-    public ResponseEntity<?> paginateAndFilterCustomers(
+    public ResponseEntity<?> paginateAndFilterPayments(
             @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
             @RequestAttribute(required = false, name = "date") Date date) {
 
@@ -57,7 +57,7 @@ public class PaymentController extends BaseController<Payment, Long, PaymentServ
             throw new EntityNotFoundException();
         } else {
             Page<GetPaymentPaginatedDto> dtoList = result
-                    .map(paymentDtoConverter::convertUserEntityToGetUserDetailsDto);
+                    .map(paymentDtoConverter::convertPaymentToGetPaymentPaginatedDto);
 
             return ResponseEntity.ok().body(dtoList);
 
