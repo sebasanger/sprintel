@@ -1,5 +1,7 @@
 package com.sanger.sprintel.services;
 
+import java.util.Date;
+
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.model.Reason;
 import com.sanger.sprintel.model.Room;
@@ -8,6 +10,8 @@ import com.sanger.sprintel.model.Stay;
 import com.sanger.sprintel.repository.StayRepository;
 import com.sanger.sprintel.services.base.BaseService;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -56,5 +60,13 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
 
         return save(stay);
 
+    }
+
+    public Page<Stay> filterAndPaginateStays(Date date, Pageable pageable) {
+        if (date == null) {
+            return this.repository.findAll(pageable);
+        } else {
+            return this.repository.findByCreatedAt(date, pageable);
+        }
     }
 }
