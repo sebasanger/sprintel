@@ -1,5 +1,10 @@
 package com.sanger.sprintel.controllers;
 
+import java.util.Set;
+
+import javax.validation.Valid;
+
+import com.sanger.sprintel.dto.room.CheckRoomsAvailablesDto;
 import com.sanger.sprintel.dto.user.ChangeImageResponseDto;
 import com.sanger.sprintel.model.Room;
 import com.sanger.sprintel.services.RoomService;
@@ -8,7 +13,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,5 +45,11 @@ public class RoomController extends BaseController<Room, Long, RoomService> {
 
         return ResponseEntity.noContent().build();
 
+    }
+
+    @PostMapping("/abailability")
+    public ResponseEntity<?> newUser(@Valid @RequestBody CheckRoomsAvailablesDto checkRoomsAvailablesDto) {
+        Set<?> result = this.roomService.checkRoomsAvailability(checkRoomsAvailablesDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 }

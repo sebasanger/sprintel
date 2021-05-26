@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.Set;
 
 import com.sanger.sprintel.controllers.FilesController;
+import com.sanger.sprintel.dto.room.CheckRoomsAvailablesDto;
 import com.sanger.sprintel.dto.user.ChangeImageResponseDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.model.Image;
 import com.sanger.sprintel.model.Room;
+import com.sanger.sprintel.model.Stay;
 import com.sanger.sprintel.repository.RoomRepository;
+import com.sanger.sprintel.repository.StayRepository;
 import com.sanger.sprintel.services.base.BaseService;
 import com.sanger.sprintel.utils.upload.StorageException;
 import com.sanger.sprintel.utils.upload.StorageService;
@@ -30,6 +33,8 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
     private final StorageService storageService;
 
     private final ImageService imageService;
+
+    private final StayRepository stayRepository;
 
     public ChangeImageResponseDto uploadAvatarAndDeleteOld(MultipartFile file, Long id, String title) {
         System.out.println(file.getContentType());
@@ -78,6 +83,21 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
 
         this.imageService.delete(image);
 
+    }
+
+    public Set<?> checkRoomsAvailability(CheckRoomsAvailablesDto checkRoomsAvailablesDto) {
+        Set<Stay> ocuppedRooms = stayRepository.findAllByEntryDateGreaterThanEqualAndOutDateLessThanEqual(
+                checkRoomsAvailablesDto.getStart(), checkRoomsAvailablesDto.getEnd()).get();
+        Set<Long> idRooms = new HashSet<>();
+
+        ocuppedRooms.forEach(ocuppedRoom -> {
+            idRooms.add(ocuppedRoom.getRoom().getId());
+        });
+
+        Set<Room> result = this.repository
+                .findByIdNotInAndCapacityGreaterThanEqual(idRooms, checkRoomsAvailablesDto.getCapacity()).get();
+
+        return result;
     }
 
 }

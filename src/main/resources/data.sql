@@ -355,7 +355,7 @@ values (6, 1, 2500, 4500 , CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, CURRENT_TIME
 -- STAYS --
 --1
 insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, check_out, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
-values (1, 1, 1, 1, false,'2021-04-27', '2021-04-28', '2021-04-27', '2021-04-28', 2400, 1200 , 2400 , 1 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (1, 1, 1, 1, false,'2021-05-27', '2021-05-28', '2021-05-27', '2021-05-28', 2400, 1200 , 2400 , 1 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (1, 2);
@@ -363,7 +363,7 @@ values (1, 2);
 --2
 
 insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, check_out, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
-values (2, 2, 2, 2,false,'2021-04-26', '2021-04-28', '2021-04-26', '2021-04-28', 6000, 2000 , 6000 , 2,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (2, 2, 2, 2,false,'2021-05-26', '2021-05-28', '2021-05-26', '2021-05-28', 6000, 2000 , 6000 , 2,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (2, 2);
@@ -373,7 +373,7 @@ values (2, 3);
 --3
 
 insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
-values (3, 3, 1, 3, true,'2021-04-27', '2021-04-29', '2021-04-27', 7500, 2500, 8000 , 3 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (3, 3, 1, 3, true,'2021-05-27', '2021-05-29', '2021-05-27', 7500, 2500, 8000 , 5 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (3, 4);
@@ -381,11 +381,16 @@ insert into customers_stays (stay_id, customer_id)
 values (3, 5);
 insert into customers_stays (stay_id, customer_id) 
 values (3, 6);
+insert into customers_stays (stay_id, customer_id) 
+values (3, 1);
+insert into customers_stays (stay_id, customer_id) 
+values (3, 2);
+
 
 --4
 
 insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, check_out, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
-values (4, 6, 3, 4, false,'2021-04-25', '2021-04-27', '2021-04-25', '2021-04-27', 3000, 1500 , 4500 , 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (4, 6, 3, 4, false,'2021-05-25', '2021-05-27', '2021-05-25', '2021-05-27', 3000, 1500 , 4500 , 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (4, 8);
@@ -393,7 +398,7 @@ values (4, 8);
 --5
 
 insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
-values (5, 7, 2, 2, true,'2021-04-28', '2021-04-29', '2021-04-28' , 4000, 2000 , 4000 , 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (5, 7, 2, 2, true,'2021-05-28', '2021-05-29', '2021-05-28' , 4000, 2000 , 4000 , 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (5, 9);

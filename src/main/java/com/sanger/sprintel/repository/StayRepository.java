@@ -1,6 +1,8 @@
 package com.sanger.sprintel.repository;
 
 import java.util.Date;
+import java.util.Optional;
+import java.util.Set;
 
 import com.sanger.sprintel.model.Stay;
 
@@ -10,4 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface StayRepository extends JpaRepository<Stay, Long> {
     Page<Stay> findByCreatedAt(Date date, Pageable pageable);
+
+    Optional<Set<Stay>> findAllByEntryDateGreaterThanEqualAndOutDateLessThanEqual(Date start, Date end);
 }
