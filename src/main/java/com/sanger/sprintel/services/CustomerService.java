@@ -1,5 +1,7 @@
 package com.sanger.sprintel.services;
 
+import java.util.Optional;
+
 import com.sanger.sprintel.dto.customer.CheckDniIsValidDto;
 import com.sanger.sprintel.dto.user.CheckEmailIsValidDto;
 import com.sanger.sprintel.model.Customer;
@@ -24,7 +26,8 @@ public class CustomerService extends BaseService<Customer, Long, CustomerReposit
 
     }
 
-    public boolean checkDniIsValid(CheckDniIsValidDto checkDniIsValidDto) {
-        return this.repository.findByDniAndIdNot(checkDniIsValidDto.getDni(), checkDniIsValidDto.getId()).isPresent();
+    public Optional<Customer> checkDniIsValid(CheckDniIsValidDto checkDniIsValidDto) {
+
+        return this.repository.findByDniAndIdNot(checkDniIsValidDto.getDni(), checkDniIsValidDto.getId());
     }
 }

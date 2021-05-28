@@ -85,7 +85,7 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
 
     }
 
-    public Set<?> checkRoomsAvailability(CheckRoomsAvailablesDto checkRoomsAvailablesDto) {
+    public Set<Room> checkRoomsAvailability(CheckRoomsAvailablesDto checkRoomsAvailablesDto) {
         Set<Stay> ocuppedRooms = stayRepository.findAllByEntryDateGreaterThanEqualAndOutDateLessThanEqual(
                 checkRoomsAvailablesDto.getStart(), checkRoomsAvailablesDto.getEnd()).get();
         Set<Long> idRooms = new HashSet<>();
@@ -94,10 +94,10 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
             idRooms.add(ocuppedRoom.getRoom().getId());
         });
 
-        Set<Room> result = this.repository
+        Set<Room> roomsAvailables = this.repository
                 .findByIdNotInAndCapacityGreaterThanEqual(idRooms, checkRoomsAvailablesDto.getCapacity()).get();
 
-        return result;
+        return roomsAvailables;
     }
 
 }

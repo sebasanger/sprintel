@@ -13,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -52,11 +50,9 @@ public class Register {
     private Boolean active;
 
     @OneToMany(mappedBy = "register")
-    @JsonManagedReference(value = "payment-register")
     private Set<Payment> payments;
 
     @OneToMany(mappedBy = "register")
-    @JsonManagedReference(value = "consumption-register")
     private Set<Consumption> consumptions;
 
     @CreatedDate

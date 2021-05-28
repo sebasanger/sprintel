@@ -18,7 +18,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -66,7 +65,7 @@ public class Customer {
     private String cuit;
 
     @ManyToMany(mappedBy = "customers", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonBackReference(value = "stay-customer")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Set<Stay> stays;

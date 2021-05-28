@@ -12,7 +12,7 @@ import javax.persistence.PreRemove;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,7 +33,7 @@ public class InvoiceType {
     private String type;
 
     @OneToMany(mappedBy = "invoiceType")
-    @JsonBackReference
+    @JsonIgnore
     private List<Customer> customers;
 
     @PreRemove

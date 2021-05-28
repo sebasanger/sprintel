@@ -48,8 +48,8 @@ public class RoomController extends BaseController<Room, Long, RoomService> {
     }
 
     @PostMapping("/abailability")
-    public ResponseEntity<?> newUser(@Valid @RequestBody CheckRoomsAvailablesDto checkRoomsAvailablesDto) {
-        Set<?> result = this.roomService.checkRoomsAvailability(checkRoomsAvailablesDto);
+    public ResponseEntity<Set<Room>> newUser(@Valid @RequestBody CheckRoomsAvailablesDto checkRoomsAvailablesDto) {
+        Set<Room> result = this.roomService.checkRoomsAvailability(checkRoomsAvailablesDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 }

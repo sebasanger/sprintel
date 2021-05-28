@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,7 +46,8 @@ public class CustomerController extends BaseController<Customer, Long, CustomerS
     }
 
     @PostMapping("/checkDniIsValid")
-    public boolean checkDniIsValid(@RequestBody CheckDniIsValidDto checkDniIsValidDto) {
-        return customerService.checkDniIsValid(checkDniIsValidDto);
+    public ResponseEntity<?> checkDniIsValid(@RequestBody CheckDniIsValidDto checkDniIsValidDto) {
+
+        return ResponseEntity.status(HttpStatus.OK).body(customerService.checkDniIsValid(checkDniIsValidDto));
     }
 }
