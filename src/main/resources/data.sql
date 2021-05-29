@@ -290,28 +290,28 @@ insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, 
 values (2, '102', 2, 1, 2, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
 insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
-values (3, '103', 3, 1, 1, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
+values (3, '103', 3, 1, 1, 1, false, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
 insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
-values (4, '104', 4, 1, 2, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
+values (4, '104', 4, 1, 2, 1, true, false ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
 insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
-values (5, '105', 1, 1, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
+values (5, '105', 1, 1, 1, 0, false, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
 insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
 values (6, '201', 1, 2, 1, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
 insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
-values (7, '202', 2, 2, 0, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
+values (7, '202', 2, 2, 0, 1, true, false ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
 insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
 values (8, '203', 3, 2, 1, 1, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
 insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
-values (9, '204', 4, 2, 0, 2, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
+values (9, '204', 4, 2, 0, 2, false, false ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
 insert into rooms (id, number ,capacity, floor, single_bed,double_bed, enabled, available, created_at, updated_at, deleted) 
-values (10, '205', 2, 2, 2, 0, true, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
+values (10, '205', 2, 2, 2, 0, false, true ,CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP, false);
 
 insert into images (id ,path, type, size, title) 
 values (1, 'http://localhost:8080/files/asd.jpeg', "jpeg", 200, "Vista de afuera");

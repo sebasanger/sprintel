@@ -1,5 +1,6 @@
 package com.sanger.sprintel.services;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -87,7 +88,12 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
             payments.add(payment);
 
             stay.setPayments(payments);
+
         }
+        // set the price
+        long noOfDaysBetween = ChronoUnit.DAYS.between(createStayDto.getEntryDate(), createStayDto.getOutDate());
+
+        stay.setTotalToPay(roomPrice.getPrice() * noOfDaysBetween);
 
         stay.setActive(createStayDto.isActive());
         stay.setPricePerDay(roomPrice.getPrice());
@@ -95,8 +101,6 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
         stay.setOutDate(createStayDto.getOutDate());
         stay.setTotalGuest(createStayDto.getTotalGuest());
         stay.setPaid(createStayDto.getPaid());
-
-        stay.setTotalToPay(createStayDto.getPaid());
 
         return save(stay);
 
