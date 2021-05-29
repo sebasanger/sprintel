@@ -18,7 +18,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -42,16 +41,14 @@ public class Stay {
     private Long id;
 
     @ManyToMany(cascade = CascadeType.MERGE)
-    @NotNull
     @JoinTable(name = "customers_stays", joinColumns = @JoinColumn(name = "stay_id"), inverseJoinColumns = @JoinColumn(name = "customer_id"))
-    private Set<@Valid @NotNull Customer> customers;
+    private Set<@Valid Customer> customers;
 
-    @NotNull
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "room_id")
     private Room room;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "stay_id")
     private Set<Payment> payments;
 
@@ -59,14 +56,12 @@ public class Stay {
     @JoinColumn(name = "stay_id")
     private Set<Consumption> consumptions;
 
-    @ManyToOne()
+    @ManyToOne(optional = true)
     private Reason reason;
 
-    @NotNull
-    @ManyToOne()
+    @ManyToOne(optional = false)
     private RoomPrice roomPrice;
 
-    @NotNull
     @Column(nullable = false)
     private Short totalGuest;
 
@@ -76,8 +71,10 @@ public class Stay {
 
     private Double paid;
 
+    @Column(nullable = false)
     private Date entryDate;
 
+    @Column(nullable = false)
     private Date outDate;
 
     private boolean active;

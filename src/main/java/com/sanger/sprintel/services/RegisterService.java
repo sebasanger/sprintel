@@ -46,4 +46,13 @@ public class RegisterService extends BaseService<Register, Long, RegisterReposit
             throw new RegisterNotOpenException();
         }
     }
+
+    public Register findActiveRegister() {
+        if (this.repository.findByActive(true).isPresent()) {
+            return this.repository.findByActive(true).get();
+        } else {
+            throw new RegisterNotOpenException();
+        }
+    }
+
 }

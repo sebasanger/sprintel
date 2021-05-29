@@ -4,10 +4,12 @@ import java.util.Date;
 
 import javax.validation.Valid;
 
+import com.sanger.sprintel.dto.stay.CreateStayDto;
 import com.sanger.sprintel.dto.stay.GetStayPaginatedDto;
 import com.sanger.sprintel.dto.stay.StayDtoConverter;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.model.Stay;
+import com.sanger.sprintel.model.UserEntity;
 import com.sanger.sprintel.services.StayService;
 
 import org.springframework.data.domain.Page;
@@ -16,6 +18,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -34,8 +37,9 @@ public class StayController extends BaseController<Stay, Long, StayService> {
     private final StayDtoConverter stayDtoConverter;
 
     @PostMapping("/save")
-    public ResponseEntity<Stay> create(@Valid @RequestBody Stay newStay) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(stayService.saveStay(newStay));
+    public ResponseEntity<Stay> create(@Valid @RequestBody CreateStayDto newStay,
+            @AuthenticationPrincipal UserEntity user) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(stayService.saveStay(newStay, user));
     }
 
     @GetMapping("/paginate-filter")
