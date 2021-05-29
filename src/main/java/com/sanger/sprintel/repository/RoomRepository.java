@@ -9,5 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
-    Optional<Set<Room>> findByIdNotInAndCapacityGreaterThanEqual(Set<Long> ids, Short capacity);
+    Optional<Set<Room>> findByCapacityGreaterThanEqualAndIdNotIn(short capacity, Set<Long> ocuppedRooms);
+
+    Optional<Set<Room>> findByCapacityGreaterThanEqual(short capacity);
 }

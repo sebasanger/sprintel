@@ -54,7 +54,6 @@ public class Product {
     private Brand brand;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @NotNull
     @JoinTable(name = "products_images", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "image_id"))
     private Set<@Valid @NotNull Image> images;
 

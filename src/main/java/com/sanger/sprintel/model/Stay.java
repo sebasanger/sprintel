@@ -1,5 +1,6 @@
 package com.sanger.sprintel.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Set;
@@ -18,6 +19,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.Valid;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
@@ -72,10 +75,12 @@ public class Stay {
     private Double paid;
 
     @Column(nullable = false)
-    private Date entryDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate entryDate;
 
     @Column(nullable = false)
-    private Date outDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate outDate;
 
     private boolean active;
 

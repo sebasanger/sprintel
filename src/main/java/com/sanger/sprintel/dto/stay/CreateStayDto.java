@@ -1,6 +1,6 @@
 package com.sanger.sprintel.dto.stay;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -35,22 +35,18 @@ public class CreateStayDto {
 	@NotNull
 	private Short totalGuest;
 
-	private Double pricePerDay;
-
-	private Double totalToPay;
-
 	private Double paid;
 
 	@NotNull
-	private Date entryDate;
+	private LocalDate entryDate;
 
 	@NotNull
-	private Date outDate;
+	private LocalDate outDate;
 
 	private boolean active;
 
-	private Date checkIn;
+	private LocalDate checkIn;
 
-	private Date checkOut;
+	private LocalDate checkOut;
 
 }

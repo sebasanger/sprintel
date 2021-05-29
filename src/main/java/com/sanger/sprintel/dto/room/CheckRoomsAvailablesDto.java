@@ -1,6 +1,6 @@
 package com.sanger.sprintel.dto.room;
 
-import java.util.Date;
+import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 
 import lombok.Builder;
@@ -13,10 +13,10 @@ import lombok.Setter;
 public class CheckRoomsAvailablesDto {
 
     @NotNull
-    private Date start;
+    private LocalDate start;
 
     @NotNull
-    private Date end;
+    private LocalDate end;
 
     @NotNull
     private Short capacity;
