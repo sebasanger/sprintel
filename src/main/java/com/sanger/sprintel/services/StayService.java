@@ -7,6 +7,7 @@ import java.util.Set;
 
 import com.sanger.sprintel.dto.stay.CreateStayDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
+import com.sanger.sprintel.model.Customer;
 import com.sanger.sprintel.model.Payment;
 import com.sanger.sprintel.model.PaymentMethod;
 import com.sanger.sprintel.model.Reason;
@@ -27,7 +28,6 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class StayService extends BaseService<Stay, Long, StayRepository> {
-
     private final CustomerService customerService;
     private final RoomService roomService;
     private final ReasonService reasonService;
@@ -44,14 +44,14 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
             throw new EntityNotFoundException("Customers could not be empty");
         }
 
+        Set<Customer> customersToAdd = new HashSet<>();
+
         createStayDto.getCustomers().forEach(customer -> {
-            if (customer.getId() == null || customer.getId() == 0
-                    || !customerService.findById(customer.getId()).isPresent()) {
-                customerService.save(customer);
-            } else {
-                createStayDto.getCustomers().add(customer);
-            }
+            Customer customerSaved = customerService.saveCustomer(customer);
+            customersToAdd.add(customerSaved);
         });
+
+        stay.setCustomers(customersToAdd);
 
         // Set room by id
         Room room = roomService.findById(createStayDto.getRoomId())

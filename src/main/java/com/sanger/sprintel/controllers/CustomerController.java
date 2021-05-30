@@ -1,5 +1,7 @@
 package com.sanger.sprintel.controllers;
 
+import javax.validation.Valid;
+
 import com.sanger.sprintel.dto.customer.CheckDniIsValidDto;
 import com.sanger.sprintel.dto.user.CheckEmailIsValidDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
@@ -26,6 +28,11 @@ import lombok.RequiredArgsConstructor;
 public class CustomerController extends BaseController<Customer, Long, CustomerService> {
 
     private final CustomerService customerService;
+
+    @PostMapping("/")
+    public ResponseEntity<Customer> create(@Valid @RequestBody Customer customer) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(customerService.saveCustomer(customer));
+    }
 
     @GetMapping("/paginate-filter")
     public ResponseEntity<?> paginateAndFilterCustomers(
