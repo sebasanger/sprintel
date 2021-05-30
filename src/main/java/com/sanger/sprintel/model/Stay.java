@@ -2,7 +2,6 @@ package com.sanger.sprintel.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -84,9 +83,9 @@ public class Stay {
 
     private boolean active;
 
-    private Date checkIn;
+    private LocalDate checkIn;
 
-    private Date checkOut;
+    private LocalDate checkOut;
 
     @CreatedDate
     private LocalDateTime createdAt;

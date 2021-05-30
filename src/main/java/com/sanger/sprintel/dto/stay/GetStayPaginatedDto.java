@@ -1,7 +1,7 @@
 package com.sanger.sprintel.dto.stay;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,8 +19,10 @@ public class GetStayPaginatedDto {
 	private Long id;
 	private String room;
 	private Short totalGuest;
-	private Date checkIn;
-	private Date checkOut;
+	private LocalDate checkIn;
+	private LocalDate checkOut;
+	private LocalDate entryDate;
+	private LocalDate outDate;
 	private Boolean active;
 	private String reason;
 	private Double price;
