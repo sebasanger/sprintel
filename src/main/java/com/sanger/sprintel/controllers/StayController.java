@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import com.sanger.sprintel.dto.stay.CreateStayDto;
 import com.sanger.sprintel.dto.stay.GetStayPaginatedDto;
 import com.sanger.sprintel.dto.stay.StayDtoConverter;
+import com.sanger.sprintel.dto.stay.UpdateStayDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.model.Stay;
 import com.sanger.sprintel.model.UserEntity;
@@ -20,6 +21,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +41,12 @@ public class StayController extends BaseController<Stay, Long, StayService> {
     public ResponseEntity<Stay> create(@Valid @RequestBody CreateStayDto newStay,
             @AuthenticationPrincipal UserEntity user) {
         return ResponseEntity.status(HttpStatus.CREATED).body(stayService.saveStay(newStay, user));
+    }
+
+    @PutMapping("/update")
+    public ResponseEntity<Stay> update(@Valid @RequestBody UpdateStayDto stay,
+            @AuthenticationPrincipal UserEntity user) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(stayService.updateStay(stay, user));
     }
 
     @PostMapping("/paginate-filter")

@@ -54,7 +54,7 @@ public class Stay {
     @JoinColumn(name = "stay_id")
     private Set<Payment> payments;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "stay_id")
     private Set<Consumption> consumptions;
 
