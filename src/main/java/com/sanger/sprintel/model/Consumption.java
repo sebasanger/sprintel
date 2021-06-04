@@ -57,10 +57,6 @@ public class Consumption {
     private Register register;
 
     @ManyToOne
-    @NotNull
-    private PaymentMethod paymentMethod;
-
-    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
 

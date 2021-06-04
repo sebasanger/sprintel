@@ -20,11 +20,12 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
@@ -49,10 +50,10 @@ public class StayController extends BaseController<Stay, Long, StayService> {
         return ResponseEntity.status(HttpStatus.CREATED).body(stayService.updateStay(stay, user));
     }
 
-    @PostMapping("/paginate-filter")
+    @GetMapping("/paginate-filter")
     public ResponseEntity<?> paginateAndFilterPayments(
             @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
-            @RequestAttribute(required = false, name = "date") Date date) {
+            @RequestParam(required = false, name = "date") Date date) {
 
         Page<Stay> result = stayService.filterAndPaginateStays(date, pageable);
 

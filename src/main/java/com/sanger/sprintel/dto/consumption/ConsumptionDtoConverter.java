@@ -14,8 +14,7 @@ public class ConsumptionDtoConverter {
 		return GetConsumptionPaginatedDto.builder().id(consumption.getId()).user(consumption.getUser().getFullName())
 				.paid(consumption.getPaid()).amount(consumption.getAmount()).stay(consumption.getStay().getId())
 				.price(consumption.getPrice()).product(consumption.getProduct().getName())
-				.register(consumption.getRegister().getId()).paymentMethod(consumption.getPaymentMethod().getMethod())
-				.build();
+				.register(consumption.getRegister().getId()).build();
 	}
 
 }

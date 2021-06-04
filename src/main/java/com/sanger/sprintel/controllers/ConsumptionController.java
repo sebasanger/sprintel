@@ -6,9 +6,11 @@ import java.util.Set;
 import javax.validation.Valid;
 
 import com.sanger.sprintel.dto.consumption.ConsumptionDtoConverter;
+import com.sanger.sprintel.dto.consumption.CreateUpdateConsumptionDto;
 import com.sanger.sprintel.dto.consumption.GetConsumptionPaginatedDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.model.Consumption;
+import com.sanger.sprintel.model.UserEntity;
 import com.sanger.sprintel.services.ConsumptionService;
 
 import org.springframework.data.domain.Page;
@@ -17,6 +19,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,8 +39,10 @@ public class ConsumptionController extends BaseController<Consumption, Long, Con
     private final ConsumptionDtoConverter consumptionDtoConverter;
 
     @PostMapping("/save")
-    public ResponseEntity<Consumption> create(@Valid @RequestBody Consumption newConsumption) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(consumptionService.saveConsumption(newConsumption));
+    public ResponseEntity<?> create(@Valid @RequestBody CreateUpdateConsumptionDto newConsumption,
+            @AuthenticationPrincipal UserEntity user) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(consumptionService.saveUpdateConsumption(newConsumption, user));
     }
 
     @GetMapping("/findByStay/{id}")
