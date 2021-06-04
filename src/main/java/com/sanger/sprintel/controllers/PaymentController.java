@@ -5,10 +5,12 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
+import com.sanger.sprintel.dto.payment.CreatePaymentDto;
 import com.sanger.sprintel.dto.payment.GetPaymentPaginatedDto;
 import com.sanger.sprintel.dto.payment.PaymentDtoConverter;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.model.Payment;
+import com.sanger.sprintel.model.UserEntity;
 import com.sanger.sprintel.services.PaymentService;
 
 import org.springframework.data.domain.Page;
@@ -17,6 +19,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,8 +39,9 @@ public class PaymentController extends BaseController<Payment, Long, PaymentServ
     private final PaymentDtoConverter paymentDtoConverter;
 
     @PostMapping("/save")
-    public ResponseEntity<Payment> create(@Valid @RequestBody Payment newPayment) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(paymentService.savePayment(newPayment));
+    public ResponseEntity<Payment> create(@Valid @RequestBody CreatePaymentDto newPayment,
+            @AuthenticationPrincipal UserEntity user) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(paymentService.savePayment(newPayment, user));
     }
 
     @GetMapping("/findByStay/{id}")

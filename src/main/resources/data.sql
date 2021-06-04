@@ -408,59 +408,59 @@ values (5, 10);
 
 -- PAYMENT STAYS --
 
-insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id) 
-values (1, 1, 2400, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1,1);
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (1, 1, 2400, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 1, "Payment stay 1");
 
-insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id) 
-values (2, 2, 3000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2,1);
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (2, 2, 3000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2, 1, "Payment stay 2");
 
-insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id) 
-values (3, 2, 3000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3,2);
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (3, 2, 3000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 2, "Payment stay 2");
 
-insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id) 
-values (4, 3, 7000, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3,2);
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (4, 3, 7000, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 2, "Payment stay 3");
 
-insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id) 
-values (5, 3, 500, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2,2);
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (5, 3, 500, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2, 2, "Payment stay 3");
 
-insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id) 
-values (6, 4, 1000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1,3);
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (6, 4, 1000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 3, "Payment stay 4");
 
-insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id) 
-values (7, 4, 1000, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1,3);
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (7, 4, 1000, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 3, "Payment stay 4");
 
-insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id) 
-values (8, 4, 1000, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1,4);
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (8, 4, 1000, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 4, "Payment stay 4");
 
-insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id) 
-values (9, 5, 4000, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3,5);
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (9, 5, 4000, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 5, "Payment stay 5");
 
 -- PAYMENT STAYS --
 
 
 -- CONSUMPTIONS --
 insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (1, 1, 1, 1, 1, 2, 70, true, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (1, 1, 1, 1, 1, 2, 70, 70, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
 insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (2, 4, 1, 2, 2, 3, 110, true, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (2, 4, 1, 2, 2, 3, 110, 110, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
 insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (3, 2, 2, 2, 2, 1, 120,true, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (3, 2, 2, 2, 2, 1, 120,100, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
 insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (4, 3, 4, 3, 1, 1, 75, true, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (4, 3, 4, 3, 1, 1, 75, 50, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
 insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (5, 4, 4, 3, 2, 3, 100, false, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (5, 4, 4, 3, 2, 3, 100, 0, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
 insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (6, 4, 5, 5, 1, 1, 110, true, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (6, 4, 5, 5, 1, 1, 110, 20, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
 insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (7, 5, 5, 5, 1, 2, 70, true, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (7, 5, 5, 5, 1, 2, 70, 70, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
 insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (8, 6, 5, 5, 1, 1, 90, true, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (8, 6, 5, 5, 1, 1, 90, 60, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
 -- CONSUMPTIONS --

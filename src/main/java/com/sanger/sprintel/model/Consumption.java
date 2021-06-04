@@ -41,7 +41,7 @@ public class Consumption {
 
     private Double price;
 
-    private Boolean paid;
+    private Double paid;
 
     @ManyToOne()
     @NotNull

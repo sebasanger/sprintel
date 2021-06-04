@@ -1,5 +1,6 @@
 package com.sanger.sprintel.dto.consumption;
 
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,17 +9,22 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetConsumptionPaginatedDto {
-	private Long id;
-	private Short amount;
-	private Double paid;
-	private Double price;
-	private String product;
+@Builder
+public class CreateConsumptionDto {
 
-	private Long stay;
-	private String user;
+	@NotNull
+	private Short amount;
+
+	@NotNull
+	private Long stayId;
+
+	@NotNull
+	private Long productId;
+
+	private Long paymentMethodId;
+
+	private Double paid;
 
 }

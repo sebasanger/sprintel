@@ -1,4 +1,4 @@
-package com.sanger.sprintel.dto.consumption;
+package com.sanger.sprintel.dto.payment;
 
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -12,21 +12,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CreateUpdateConsumptionDto {
-
-	private Long id;
+public class CreatePaymentDto {
 
 	@NotNull
-	private Short amount;
+	private Double amount;
+
+	@NotNull
+	private String description;
 
 	@NotNull
 	private Long stayId;
 
 	@NotNull
-	private Long productId;
-
 	private Long paymentMethodId;
-
-	private Long paid;
 
 }

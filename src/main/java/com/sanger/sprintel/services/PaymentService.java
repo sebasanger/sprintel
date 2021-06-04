@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.Set;
 
+import com.sanger.sprintel.dto.payment.CreatePaymentDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.model.Payment;
 import com.sanger.sprintel.model.PaymentMethod;
@@ -23,7 +24,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PaymentService extends BaseService<Payment, Long, PaymentRepository> {
     private final StayService stayService;
-    private final UserEntityService userEntityService;
     private final PaymentMethodService paymentMethodService;
     private final RegisterService registerService;
 
@@ -32,28 +32,25 @@ public class PaymentService extends BaseService<Payment, Long, PaymentRepository
         return this.repository.findByStay(stay);
     }
 
-    public Payment savePayment(Payment payment) {
+    public Payment savePayment(CreatePaymentDto createPaymentDto, UserEntity user) {
 
-        // Set user by id
-        Long userId = payment.getUser().getId();
-        UserEntity user = userEntityService.findById(userId)
-                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+        Payment payment = new Payment();
+
         payment.setUser(user);
+        payment.setDescription(createPaymentDto.getDescription());
+        payment.setAmount(createPaymentDto.getAmount());
 
-        // Set register by id
-        Long registerId = payment.getRegister().getId();
-        Register register = registerService.findById(registerId)
-                .orElseThrow(() -> new EntityNotFoundException("Register not found"));
+        // Set register active
+        Register register = registerService.findActiveRegister();
         payment.setRegister(register);
 
         // Set stay by id
-        Long stayId = payment.getStay().getId();
-        Stay stay = stayService.findById(stayId).orElseThrow(() -> new EntityNotFoundException("Stay not found"));
+        Stay stay = stayService.findById(createPaymentDto.getStayId())
+                .orElseThrow(() -> new EntityNotFoundException("Stay not found"));
         payment.setStay(stay);
 
         // Set payment method by id
-        Long paymentMethodId = payment.getPaymentMethod().getId();
-        PaymentMethod paymentMethod = paymentMethodService.findById(paymentMethodId)
+        PaymentMethod paymentMethod = paymentMethodService.findById(createPaymentDto.getPaymentMethodId())
                 .orElseThrow(() -> new EntityNotFoundException("Payment method not found"));
         payment.setPaymentMethod(paymentMethod);
 

@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.validation.Valid;
 
 import com.sanger.sprintel.dto.consumption.ConsumptionDtoConverter;
-import com.sanger.sprintel.dto.consumption.CreateUpdateConsumptionDto;
+import com.sanger.sprintel.dto.consumption.CreateConsumptionDto;
 import com.sanger.sprintel.dto.consumption.GetConsumptionPaginatedDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.model.Consumption;
@@ -39,7 +39,7 @@ public class ConsumptionController extends BaseController<Consumption, Long, Con
     private final ConsumptionDtoConverter consumptionDtoConverter;
 
     @PostMapping("/save")
-    public ResponseEntity<?> create(@Valid @RequestBody CreateUpdateConsumptionDto newConsumption,
+    public ResponseEntity<?> create(@Valid @RequestBody CreateConsumptionDto newConsumption,
             @AuthenticationPrincipal UserEntity user) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(consumptionService.saveUpdateConsumption(newConsumption, user));

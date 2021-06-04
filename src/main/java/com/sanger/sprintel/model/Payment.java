@@ -2,6 +2,7 @@ package com.sanger.sprintel.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,11 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private Double amount;
+
+    @Column(nullable = false)
+    private String description;
 
     @ManyToOne()
     @NotNull
