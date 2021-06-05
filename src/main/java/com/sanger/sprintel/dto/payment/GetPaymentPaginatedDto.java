@@ -14,6 +14,7 @@ import lombok.Setter;
 public class GetPaymentPaginatedDto {
 	private Long id;
 	private Double amount;
+	private String description;
 	private String paymentMethod;
 	private Long registerId;
 	private Long stayId;

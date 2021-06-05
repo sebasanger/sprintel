@@ -20,6 +20,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,6 +45,12 @@ public class PaymentController extends BaseController<Payment, Long, PaymentServ
         return ResponseEntity.status(HttpStatus.CREATED).body(paymentService.savePayment(newPayment, user));
     }
 
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        paymentService.removePayment(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping("/findByStay/{id}")
     public ResponseEntity<?> findByEntityId(@PathVariable Long id) {
         Set<Payment> result = service.findByStay(id).orElseThrow(() -> new EntityNotFoundException());
@@ -52,7 +59,7 @@ public class PaymentController extends BaseController<Payment, Long, PaymentServ
 
     @GetMapping("/paginate-filter")
     public ResponseEntity<?> paginateAndFilterPayments(
-            @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
+            @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.DESC) Pageable pageable,
             @RequestAttribute(required = false, name = "date") Date date) {
 
         Page<Payment> result = paymentService.filterAndPaginatePayments(date, pageable);

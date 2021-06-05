@@ -26,6 +26,7 @@ public class PaymentService extends BaseService<Payment, Long, PaymentRepository
     private final StayService stayService;
     private final PaymentMethodService paymentMethodService;
     private final RegisterService registerService;
+    private final PaymentRepository paymentRepository;
 
     public Optional<Set<Payment>> findByStay(Long stayId) {
         Stay stay = stayService.findById(stayId).orElseThrow(() -> new EntityNotFoundException());
@@ -43,6 +44,8 @@ public class PaymentService extends BaseService<Payment, Long, PaymentRepository
         // Set register active
         Register register = registerService.findActiveRegister();
         payment.setRegister(register);
+        // update register balance
+        register.addBalance(createPaymentDto.getAmount());
 
         // Set stay by id
         Stay stay = stayService.findById(createPaymentDto.getStayId())
@@ -55,6 +58,15 @@ public class PaymentService extends BaseService<Payment, Long, PaymentRepository
         payment.setPaymentMethod(paymentMethod);
 
         return save(payment);
+
+    }
+
+    public void removePayment(Long id) {
+
+        Payment payment = this.repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Payment not found"));
+
+        paymentRepository.delete(payment);
 
     }
 

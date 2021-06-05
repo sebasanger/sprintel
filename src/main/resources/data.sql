@@ -439,28 +439,28 @@ values (9, 5, 4000, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 5, "Payment stay 
 
 
 -- CONSUMPTIONS --
-insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (1, 1, 1, 1, 1, 2, 70, 70, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
+values (1, 1, 1, 1, 2, 70, 70, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
-insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (2, 4, 1, 2, 2, 3, 110, 110, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
+values (2, 4, 1, 2, 3, 110, 110, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
-insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (3, 2, 2, 2, 2, 1, 120,100, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
+values (3, 2, 2, 2, 1, 120,100, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
-insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (4, 3, 4, 3, 1, 1, 75, 50, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
+values (4, 3, 4, 1, 1, 75, 50, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
-insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (5, 4, 4, 3, 2, 3, 100, 0, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
+values (5, 4, 4, 2, 3, 100, 0, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
-insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (6, 4, 5, 5, 1, 1, 110, 20, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
+values (6, 4, 5, 1, 1, 110, 20, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
-insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (7, 5, 5, 5, 1, 2, 70, 70, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
+values (7, 5, 5, 1, 2, 70, 70, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
-insert into consumptions (id, product_id, stay_id, register_id, user_id, amount, price,paid, created_at, updated_at) 
-values (8, 6, 5, 5, 1, 1, 90, 60, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
+values (8, 6, 5, 1, 1, 90, 60, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
 -- CONSUMPTIONS --

@@ -34,13 +34,15 @@ public class ConsumptionService extends BaseService<Consumption, Long, Consumpti
         return this.repository.findByStay(stay);
     }
 
-    public Consumption saveUpdateConsumption(CreateConsumptionDto createConsumptionDto, UserEntity user) {
+    public Consumption saveConsumption(CreateConsumptionDto createConsumptionDto, UserEntity user) {
         Consumption consumption = new Consumption();
 
         // Set product by id
         Product product = productService.findById(createConsumptionDto.getProductId())
                 .orElseThrow(() -> new EntityNotFoundException("Product method not found"));
         consumption.setProduct(product);
+        // reduct stock of product
+        product.removeStock(createConsumptionDto.getAmount());
 
         // Set stay by id
         Stay stay = stayService.findById(createConsumptionDto.getStayId())

@@ -41,8 +41,7 @@ public class ConsumptionController extends BaseController<Consumption, Long, Con
     @PostMapping("/save")
     public ResponseEntity<?> create(@Valid @RequestBody CreateConsumptionDto newConsumption,
             @AuthenticationPrincipal UserEntity user) {
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(consumptionService.saveUpdateConsumption(newConsumption, user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(consumptionService.saveConsumption(newConsumption, user));
     }
 
     @GetMapping("/findByStay/{id}")
@@ -53,7 +52,7 @@ public class ConsumptionController extends BaseController<Consumption, Long, Con
 
     @GetMapping("/paginate-filter")
     public ResponseEntity<?> paginateAndFilterPayments(
-            @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
+            @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.DESC) Pageable pageable,
             @RequestAttribute(required = false, name = "date") Date date) {
 
         Page<Consumption> result = consumptionService.filterAndPaginateConsumptions(date, pageable);

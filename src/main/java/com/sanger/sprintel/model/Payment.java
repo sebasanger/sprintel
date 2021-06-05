@@ -2,6 +2,7 @@ package com.sanger.sprintel.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -41,14 +42,14 @@ public class Payment {
     @Column(nullable = false)
     private String description;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull
     @JsonBackReference(value = "stay-payment")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Stay stay;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull
     @JoinColumn(name = "user_id")
     private UserEntity user;
@@ -57,7 +58,7 @@ public class Payment {
     @NotNull
     private PaymentMethod paymentMethod;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull
     @JsonBackReference(value = "payment-register")
     @EqualsAndHashCode.Exclude

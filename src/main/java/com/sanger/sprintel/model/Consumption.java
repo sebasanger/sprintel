@@ -51,12 +51,6 @@ public class Consumption {
     private Stay stay;
 
     @ManyToOne
-    @JsonBackReference(value = "consumtion-register")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
-    private Register register;
-
-    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
 

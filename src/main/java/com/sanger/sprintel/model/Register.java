@@ -3,6 +3,7 @@ package com.sanger.sprintel.model;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -49,16 +50,21 @@ public class Register {
 
     private Boolean active;
 
-    @OneToMany(mappedBy = "register")
+    @OneToMany(mappedBy = "register", cascade = CascadeType.ALL)
     private Set<Payment> payments;
-
-    @OneToMany(mappedBy = "register")
-    private Set<Consumption> consumptions;
 
     @CreatedDate
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public void addBalance(Double amount) {
+        this.balance += amount;
+    }
+
+    public void removeBalance(Double amount) {
+        this.balance -= amount;
+    }
 
 }
