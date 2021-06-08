@@ -63,10 +63,7 @@ public class PaymentService extends BaseService<Payment, Long, PaymentRepository
 
     public void removePayment(Long id) {
 
-        Payment payment = this.repository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Payment not found"));
-
-        paymentRepository.delete(payment);
+        paymentRepository.deleteById(id);
 
     }
 

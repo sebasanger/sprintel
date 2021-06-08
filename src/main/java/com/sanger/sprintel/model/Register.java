@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -21,7 +20,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "registers")
@@ -50,7 +51,9 @@ public class Register {
 
     private Boolean active;
 
-    @OneToMany(mappedBy = "register", cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "register", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Payment> payments;
 
     @CreatedDate
@@ -65,6 +68,14 @@ public class Register {
 
     public void removeBalance(Double amount) {
         this.balance -= amount;
+    }
+
+    public Double getTotalPayments() {
+        return payments.stream().mapToDouble(Payment::getAmount).sum();
+    }
+
+    public Double getActualBalance() {
+        return getTotalPayments() + this.openMount;
     }
 
 }

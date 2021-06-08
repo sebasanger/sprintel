@@ -1,6 +1,7 @@
 package com.sanger.sprintel.model;
 
 import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -46,15 +47,16 @@ public class Consumption {
     @ManyToOne()
     @NotNull
     @JsonBackReference(value = "stay-consumption")
+    @JoinColumn(name = "stay_id")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Stay stay;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "product_id")
     private Product product;
 
@@ -63,5 +65,9 @@ public class Consumption {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Double getSubtotal() {
+        return this.price * this.amount;
+    }
 
 }

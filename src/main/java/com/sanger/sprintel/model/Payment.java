@@ -42,24 +42,27 @@ public class Payment {
     @Column(nullable = false)
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
+    @JoinColumn(name = "stay_id")
     @NotNull
     @JsonBackReference(value = "stay-payment")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     private Stay stay;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @NotNull
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @ManyToOne
+    @ManyToOne()
     @NotNull
+    @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @NotNull
+    @JoinColumn(name = "register_id")
     @JsonBackReference(value = "payment-register")
     @EqualsAndHashCode.Exclude
     @ToString.Exclude

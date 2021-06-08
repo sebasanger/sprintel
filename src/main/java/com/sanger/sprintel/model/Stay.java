@@ -2,6 +2,7 @@ package com.sanger.sprintel.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -27,7 +28,9 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "stays")
@@ -50,13 +53,19 @@ public class Stay {
     @JoinColumn(name = "room_id")
     private Room room;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     @JoinColumn(name = "stay_id")
-    private Set<Payment> payments;
+    @Builder.Default
+    private Set<Payment> payments = new HashSet<>();
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "stay_id")
-    private Set<Consumption> consumptions;
+    @Builder.Default
+    private Set<Consumption> consumptions = new HashSet<>();
 
     @ManyToOne(optional = true)
     private Reason reason;
@@ -101,4 +110,19 @@ public class Stay {
         this.customers.remove(customer);
     }
 
+    public Double getTotalConcumptions() {
+        if (this.consumptions.isEmpty()) {
+            return 0D;
+        } else {
+            return consumptions.stream().mapToDouble(Consumption::getSubtotal).sum();
+        }
+    }
+
+    public Double getTotalPayments() {
+        if (this.consumptions.isEmpty()) {
+            return 0D;
+        } else {
+            return payments.stream().mapToDouble(Payment::getAmount).sum();
+        }
+    }
 }
