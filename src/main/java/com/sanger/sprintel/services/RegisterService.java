@@ -24,7 +24,7 @@ public class RegisterService extends BaseService<Register, Long, RegisterReposit
             return this.repository.findAll(pageable);
         } else {
             Double balace = Double.parseDouble(filter);
-            return this.repository.findByBalance(balace, pageable);
+            return this.repository.findByActualBalance(balace, pageable);
         }
     }
 

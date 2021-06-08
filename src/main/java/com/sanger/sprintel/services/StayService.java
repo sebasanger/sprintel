@@ -1,6 +1,5 @@
 package com.sanger.sprintel.services;
 
-import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,7 +7,6 @@ import java.util.Set;
 import com.sanger.sprintel.dto.stay.CreateStayDto;
 import com.sanger.sprintel.dto.stay.UpdateStayDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
-import com.sanger.sprintel.model.Consumption;
 import com.sanger.sprintel.model.Customer;
 import com.sanger.sprintel.model.Payment;
 import com.sanger.sprintel.model.PaymentMethod;
@@ -93,17 +91,12 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
             stay.setPayments(payments);
 
         }
-        // set the price
-        long noOfDaysBetween = ChronoUnit.DAYS.between(createStayDto.getEntryDate(), createStayDto.getOutDate());
-
-        stay.setTotalToPay(roomPrice.getPrice() * noOfDaysBetween);
 
         stay.setActive(createStayDto.isActive());
         stay.setPricePerDay(roomPrice.getPrice());
         stay.setEntryDate(createStayDto.getEntryDate());
         stay.setOutDate(createStayDto.getOutDate());
         stay.setTotalGuest(createStayDto.getTotalGuest());
-        stay.setPaid(createStayDto.getPaid());
 
         return save(stay);
 
@@ -149,22 +142,11 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
                 .orElseThrow(() -> new EntityNotFoundException("Room price not found"));
         stay.setRoomPrice(roomPrice);
 
-        Set<Consumption> consumptions = stay.getConsumptions();
-
-        Double totalPrice = consumptions.stream()
-                .mapToDouble(consumption -> consumption.getPrice() * consumption.getAmount()).sum();
-        System.out.println(totalPrice);
-        // set the price
-        long noOfDaysBetween = ChronoUnit.DAYS.between(updateStayDto.getEntryDate(), updateStayDto.getOutDate());
-
-        stay.setTotalToPay(roomPrice.getPrice() * noOfDaysBetween + totalPrice);
-
         stay.setActive(updateStayDto.isActive());
         stay.setPricePerDay(roomPrice.getPrice());
         stay.setEntryDate(updateStayDto.getEntryDate());
         stay.setOutDate(updateStayDto.getOutDate());
         stay.setTotalGuest(updateStayDto.getTotalGuest());
-        stay.setPaid(updateStayDto.getPaid());
 
         return save(stay);
 

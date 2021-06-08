@@ -331,39 +331,39 @@ values (1, 2);
 -- ROOMS --
 
 -- REGISTERS --
-insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at, close_mount) 
-values (1, 1, 5000, 7000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 800);
+insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at, close_mount) 
+values (1, 1, 5000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 800);
 
-insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at, close_mount) 
-values (2, 3, 8000, 5000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1200);
+insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at, close_mount) 
+values (2, 3, 8000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1200);
 
-insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at, close_mount) 
-values (3, 5, 200, 600 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2000);
+insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at, close_mount) 
+values (3, 5, 200 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2000);
 
-insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at, close_mount) 
-values (4, 2, 10000, 18000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2800);
+insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at, close_mount) 
+values (4, 2, 10000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2800);
 
-insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at, close_mount) 
-values (5, 3, 15000, 12000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 900);
+insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at, close_mount) 
+values (5, 3, 15000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 900);
 
-insert into registers (id, user_id, open_mount, balance, close_time, active, created_at, updated_at) 
-values (6, 1, 2500, 4500 , CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at) 
+values (6, 1, 2500 , CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- REGISTERS --
 
 
 -- STAYS --
 --1
-insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, check_out, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
-values (1, 1, 1, 1, false,'2021-05-27', '2021-05-28', '2021-05-27', '2021-05-28', 2400, 1200 , 2400 , 1 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at) 
+values (1, 1, 1, 1, false,'2021-05-27', '2021-05-28', '2021-05-27', '2021-05-28', 1200, 1 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (1, 2);
 
 --2
 
-insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, check_out, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
-values (2, 2, 2, 2,false,'2021-05-26', '2021-05-28', '2021-05-26', '2021-05-28', 6000, 2000 , 6000 , 2,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at) 
+values (2, 2, 2, 2,false,'2021-05-26', '2021-05-28', '2021-05-26', '2021-05-28', 2000, 2,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (2, 2);
@@ -372,8 +372,8 @@ values (2, 3);
 
 --3
 
-insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
-values (3, 3, 1, 3, true,'2021-05-27', '2021-05-29', '2021-05-27', 7500, 2500, 8000 , 5 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, price_per_day, total_guest, created_at, updated_at) 
+values (3, 3, 1, 3, true,'2021-05-27', '2021-05-29', '2021-05-27', 2500, 5 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (3, 4);
@@ -389,16 +389,16 @@ values (3, 2);
 
 --4
 
-insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, check_out, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
-values (4, 6, 3, 4, false,'2021-05-25', '2021-05-27', '2021-05-25', '2021-05-27', 3000, 1500 , 4500 , 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at) 
+values (4, 6, 3, 4, false,'2021-05-25', '2021-05-27', '2021-05-25', '2021-05-27', 1500, 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (4, 8);
 
 --5
 
-insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, paid, price_per_day, total_to_pay ,total_guest, created_at, updated_at) 
-values (5, 7, 2, 2, true,'2021-05-28', '2021-05-29', '2021-05-28' , 4000, 2000 , 4000 , 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, price_per_day, total_guest, created_at, updated_at) 
+values (5, 7, 2, 2, true,'2021-05-28', '2021-05-29', '2021-05-28', 2000, 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (5, 9);

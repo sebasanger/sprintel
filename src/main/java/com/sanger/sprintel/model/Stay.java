@@ -2,6 +2,7 @@ package com.sanger.sprintel.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
@@ -77,10 +78,6 @@ public class Stay {
 
     private Double pricePerDay;
 
-    private Double totalToPay;
-
-    private Double paid;
-
     @Column(nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate entryDate;
@@ -109,7 +106,7 @@ public class Stay {
         this.customers.remove(customer);
     }
 
-    public Double getTotalConcumptions() {
+    public Double getTotalConsumptions() {
         if (this.consumptions.isEmpty()) {
             return 0D;
         } else {
@@ -122,6 +119,16 @@ public class Stay {
             return 0D;
         } else {
             return payments.stream().mapToDouble(Payment::getAmount).sum();
+        }
+    }
+
+    public Double getTotalToPay() {
+        if (this.pricePerDay == null) {
+            return 0D;
+        } else {
+            long noOfDaysBetween = ChronoUnit.DAYS.between(entryDate, outDate);
+            return roomPrice.getPrice() * noOfDaysBetween;
+
         }
     }
 
