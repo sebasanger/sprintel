@@ -9,21 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Table(name = "consumptions")
@@ -45,11 +40,8 @@ public class Consumption {
     private Double paid;
 
     @ManyToOne()
-    @NotNull
     @JsonBackReference(value = "stay-consumption")
     @JoinColumn(name = "stay_id")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     private Stay stay;
 
     @ManyToOne()
@@ -68,6 +60,11 @@ public class Consumption {
 
     public Double getSubtotal() {
         return this.price * this.amount;
+    }
+
+    @PreRemove
+    private void preRemove() {
+        this.product.addStock(this.amount);
     }
 
 }

@@ -13,7 +13,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class RegisterService extends BaseService<Register, Long, RegisterRepository> {
 
     public Page<Register> filterAndPaginateRegister(String filter, Pageable pageable) {

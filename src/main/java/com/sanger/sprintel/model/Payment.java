@@ -2,7 +2,6 @@ package com.sanger.sprintel.model;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -12,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import org.hibernate.annotations.UpdateTimestamp;
@@ -21,9 +19,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
 @Table(name = "payments")
@@ -42,30 +38,22 @@ public class Payment {
     @Column(nullable = false)
     private String description;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "stay_id")
-    @NotNull
     @JsonBackReference(value = "stay-payment")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     private Stay stay;
 
-    @ManyToOne()
-    @NotNull
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @ManyToOne()
-    @NotNull
+    @ManyToOne
     @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @NotNull
+    @ManyToOne
     @JoinColumn(name = "register_id")
     @JsonBackReference(value = "payment-register")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     private Register register;
 
     @CreatedDate
@@ -73,4 +61,5 @@ public class Payment {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
 }

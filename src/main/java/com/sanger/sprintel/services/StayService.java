@@ -169,4 +169,5 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
         return save(stay);
 
     }
+
 }

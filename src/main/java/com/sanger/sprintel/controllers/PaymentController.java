@@ -20,7 +20,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,12 +42,6 @@ public class PaymentController extends BaseController<Payment, Long, PaymentServ
     public ResponseEntity<Payment> create(@Valid @RequestBody CreatePaymentDto newPayment,
             @AuthenticationPrincipal UserEntity user) {
         return ResponseEntity.status(HttpStatus.CREATED).body(paymentService.savePayment(newPayment, user));
-    }
-
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        paymentService.removePayment(id);
-        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/findByStay/{id}")
@@ -74,4 +67,5 @@ public class PaymentController extends BaseController<Payment, Long, PaymentServ
 
         }
     }
+
 }

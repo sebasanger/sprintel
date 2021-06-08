@@ -78,4 +78,5 @@ public class ConsumptionService extends BaseService<Consumption, Long, Consumpti
             return this.repository.findByCreatedAt(date, pageable);
         }
     }
+
 }

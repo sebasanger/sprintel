@@ -30,14 +30,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RegisterController extends BaseController<Register, Long, RegisterService> {
 
-    private final RegisterService registerService;
-
     @GetMapping("/paginate-filter")
     public ResponseEntity<?> paginateAndFilterCustomers(
             @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
             @RequestParam(defaultValue = "") String filter) {
 
-        Page<Register> result = registerService.filterAndPaginateRegister(filter, pageable);
+        Page<Register> result = this.service.filterAndPaginateRegister(filter, pageable);
 
         if (result.isEmpty()) {
             throw new EntityNotFoundException();

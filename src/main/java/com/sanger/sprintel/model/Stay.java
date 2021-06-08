@@ -8,7 +8,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -53,7 +52,7 @@ public class Stay {
     @JoinColumn(name = "room_id")
     private Room room;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
     @JoinColumn(name = "stay_id")
@@ -62,7 +61,7 @@ public class Stay {
 
     @EqualsAndHashCode.Exclude
     @ToString.Exclude
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "stay_id")
     @Builder.Default
     private Set<Consumption> consumptions = new HashSet<>();
@@ -125,4 +124,25 @@ public class Stay {
             return payments.stream().mapToDouble(Payment::getAmount).sum();
         }
     }
+
+    public void addPayment(Payment payment) {
+        payments.add(payment);
+        payment.setStay(this);
+    }
+
+    public void removePayment(Payment payment) {
+        payments.remove(payment);
+        payment.setStay(null);
+    }
+
+    public void addConsumption(Consumption consumption) {
+        consumptions.add(consumption);
+        consumption.setStay(this);
+    }
+
+    public void removeConsumption(Consumption consumption) {
+        consumptions.remove(consumption);
+        consumption.setStay(null);
+    }
+
 }

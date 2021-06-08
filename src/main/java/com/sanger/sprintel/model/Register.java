@@ -45,8 +45,6 @@ public class Register {
 
     private Double closeMount;
 
-    private Double balance;
-
     private LocalDateTime closeTime;
 
     private Boolean active;
@@ -62,20 +60,23 @@ public class Register {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    public void addBalance(Double amount) {
-        this.balance += amount;
-    }
-
-    public void removeBalance(Double amount) {
-        this.balance -= amount;
-    }
-
     public Double getTotalPayments() {
-        return payments.stream().mapToDouble(Payment::getAmount).sum();
+        return this.payments.stream().mapToDouble(Payment::getAmount).sum();
     }
 
     public Double getActualBalance() {
         return getTotalPayments() + this.openMount;
+    }
+
+    public void addPayment(Payment payment) {
+        payments.add(payment);
+        payment.setRegister(this);
+    }
+
+    public void removePayment(Payment payment) {
+        payments.remove(payment);
+        payment.getStay().removePayment(payment);
+        payment.setRegister(null);
     }
 
 }

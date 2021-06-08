@@ -67,4 +67,5 @@ public class ConsumptionController extends BaseController<Consumption, Long, Con
 
         }
     }
+
 }
