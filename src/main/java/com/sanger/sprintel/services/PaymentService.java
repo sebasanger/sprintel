@@ -37,7 +37,6 @@ public class PaymentService extends BaseService<Payment, Long, PaymentRepository
         Payment payment = new Payment();
 
         payment.setUser(user);
-        payment.setDescription(createPaymentDto.getDescription());
         payment.setAmount(createPaymentDto.getAmount());
 
         // Set register active
@@ -53,6 +52,13 @@ public class PaymentService extends BaseService<Payment, Long, PaymentRepository
         PaymentMethod paymentMethod = paymentMethodService.findById(createPaymentDto.getPaymentMethodId())
                 .orElseThrow(() -> new EntityNotFoundException("Payment method not found"));
         payment.setPaymentMethod(paymentMethod);
+
+        if (createPaymentDto.getDescription() != null) {
+            payment.setDescription(createPaymentDto.getDescription());
+        } else {
+            payment.setDescription("Pay for stay " + createPaymentDto.getStayId());
+
+        }
 
         return save(payment);
 

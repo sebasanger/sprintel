@@ -73,7 +73,7 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
             Set<Payment> payments = new HashSet<>();
             Payment payment = new Payment();
             payment.setAmount(createStayDto.getPaid());
-            payment.setDescription("Payment for stay");
+            payment.setDescription("Pay on entry stay");
 
             // Set apyment method
             PaymentMethod paymentMethod = paymentMethodService.findById(createStayDto.getPaymentMethodId())

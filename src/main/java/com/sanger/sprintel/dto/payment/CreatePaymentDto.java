@@ -17,7 +17,6 @@ public class CreatePaymentDto {
 	@NotNull
 	private Double amount;
 
-	@NotNull
 	private String description;
 
 	@NotNull

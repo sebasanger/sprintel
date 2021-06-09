@@ -115,7 +115,7 @@ public class Stay {
     }
 
     public Double getTotalPayments() {
-        if (this.consumptions.isEmpty()) {
+        if (this.payments.isEmpty()) {
             return 0D;
         } else {
             return payments.stream().mapToDouble(Payment::getAmount).sum();
@@ -127,7 +127,19 @@ public class Stay {
             return 0D;
         } else {
             long noOfDaysBetween = ChronoUnit.DAYS.between(entryDate, outDate);
-            return roomPrice.getPrice() * noOfDaysBetween;
+
+            Double totalRoomPrice = roomPrice.getPrice() * noOfDaysBetween;
+
+            return totalRoomPrice + getTotalConsumptions();
+
+        }
+    }
+
+    public Double getTotalRemaining() {
+        if (this.getTotalToPay() == null) {
+            return 0D;
+        } else {
+            return getTotalToPay() - getTotalPayments();
 
         }
     }
