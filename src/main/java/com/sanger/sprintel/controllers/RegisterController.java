@@ -1,5 +1,7 @@
 package com.sanger.sprintel.controllers;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import com.sanger.sprintel.dto.register.CloseRegisterDto;
@@ -16,7 +18,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -50,13 +51,22 @@ public class RegisterController extends BaseController<Register, Long, RegisterS
         return ResponseEntity.status(HttpStatus.CREATED).body(service.saveRegister(newRegister, user));
     }
 
-    @PutMapping({ "/close", "close/{id}" })
-    public ResponseEntity<Void> closeRegister(@Valid @RequestBody CloseRegisterDto closeRegisterDto,
-            @PathVariable(required = false) Long id) {
+    @PutMapping({ "/close" })
+    public ResponseEntity<Void> closeRegister(@Valid @RequestBody CloseRegisterDto closeRegisterDto) {
 
         this.service.closeRegister(closeRegisterDto);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/getRegisterOpen")
+    public ResponseEntity<?> findRegisterOpenOrFalse() {
+        Optional<Register> result = this.service.isRegisterActive();
+        if (result.isPresent()) {
+            return ResponseEntity.ok().body(result.get());
+        } else {
+            return ResponseEntity.noContent().build();
+        }
     }
 
 }

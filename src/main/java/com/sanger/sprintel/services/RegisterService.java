@@ -1,7 +1,8 @@
 package com.sanger.sprintel.services;
 
+import java.util.Optional;
+
 import com.sanger.sprintel.dto.register.CloseRegisterDto;
-import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.error.exceptions.RegisterNotClosedException;
 import com.sanger.sprintel.error.exceptions.RegisterNotOpenException;
 import com.sanger.sprintel.model.Register;
@@ -39,8 +40,7 @@ public class RegisterService extends BaseService<Register, Long, RegisterReposit
 
     public Register closeRegister(CloseRegisterDto closeRegisterDto) {
         if (this.repository.findByActive(true).isPresent()) {
-            Register registerUpdate = this.repository.findById(closeRegisterDto.getId())
-                    .orElseThrow(() -> new EntityNotFoundException());
+            Register registerUpdate = this.findActiveRegister();
             registerUpdate.setCloseMount(closeRegisterDto.getCloseMount());
             registerUpdate.setActive(false);
 
@@ -56,6 +56,11 @@ public class RegisterService extends BaseService<Register, Long, RegisterReposit
         } else {
             throw new RegisterNotOpenException();
         }
+    }
+
+    public Optional<Register> isRegisterActive() {
+        return this.repository.findByActive(true);
+
     }
 
 }
