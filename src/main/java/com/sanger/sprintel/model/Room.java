@@ -47,8 +47,12 @@ public class Room {
     @NotNull
     private String number;
 
+    @Column(nullable = false)
+    @NotNull
     private Short floor;
 
+    @Column(nullable = false)
+    @NotNull
     private Short capacity;
 
     private Short singleBed;
@@ -56,7 +60,6 @@ public class Room {
     private Short doubleBed;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @NotNull
     @JoinTable(name = "rooms_images", joinColumns = @JoinColumn(name = "room_id"), inverseJoinColumns = @JoinColumn(name = "image_id"))
     private Set<@Valid @NotNull Image> images;
 

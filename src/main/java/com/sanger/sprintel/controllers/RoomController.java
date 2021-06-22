@@ -1,5 +1,6 @@
 package com.sanger.sprintel.controllers;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -12,6 +13,7 @@ import com.sanger.sprintel.services.RoomService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -48,9 +50,17 @@ public class RoomController extends BaseController<Room, Long, RoomService> {
     }
 
     @PostMapping("/abailability")
-    public ResponseEntity<Set<Room>> newUser(@Valid @RequestBody CheckRoomsAvailablesDto checkRoomsAvailablesDto) {
+    public ResponseEntity<Set<Room>> roomsAbailability(
+            @Valid @RequestBody CheckRoomsAvailablesDto checkRoomsAvailablesDto) {
 
         Set<Room> result = this.roomService.checkRoomsAvailability(checkRoomsAvailablesDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
+    }
+
+    @GetMapping("/status")
+    public ResponseEntity<List<Room>> roomStatus() {
+
+        List<Room> result = this.roomService.checkRoomsStatus();
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 }

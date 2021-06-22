@@ -7,6 +7,7 @@ import java.util.Set;
 import com.sanger.sprintel.dto.stay.CreateStayDto;
 import com.sanger.sprintel.dto.stay.UpdateStayDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
+import com.sanger.sprintel.error.exceptions.StayNotPaidException;
 import com.sanger.sprintel.model.Customer;
 import com.sanger.sprintel.model.Payment;
 import com.sanger.sprintel.model.PaymentMethod;
@@ -148,6 +149,20 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
         stay.setOutDate(updateStayDto.getOutDate());
         stay.setTotalGuest(updateStayDto.getTotalGuest());
 
+        return save(stay);
+
+    }
+
+    public Stay finishStay(Long id) {
+        Stay stay = this.repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Not have stay with this id"));
+        System.out.println(stay.getTotalPayments());
+        System.out.println(stay.getTotalToPay());
+        if (stay.getTotalPayments() >= stay.getTotalToPay()) {
+            stay.setActive(false);
+        } else {
+            throw new StayNotPaidException();
+        }
         return save(stay);
 
     }

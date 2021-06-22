@@ -398,7 +398,7 @@ values (4, 8);
 --5
 
 insert into stays (id, room_id, reason_id, room_price_id, active, entry_date, out_date, check_in, price_per_day, total_guest, created_at, updated_at) 
-values (5, 7, 2, 2, true,'2021-05-28', '2021-05-29', '2021-05-28', 2000, 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (5, 7, 2, 2, true,'2021-06-18', '2021-06-20', '2021-06-18', 2000, 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (5, 9);
@@ -409,31 +409,31 @@ values (5, 10);
 -- PAYMENT STAYS --
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (1, 1, 2400, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 1, "Payment stay 1");
+values (1, 1, 800, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 1, "Payment stay 1");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (2, 2, 3000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2, 1, "Payment stay 2");
+values (2, 2, 700, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2, 1, "Payment stay 2");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (3, 2, 3000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 2, "Payment stay 2");
+values (3, 2, 400, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 2, "Payment stay 2");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (4, 3, 7000, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 2, "Payment stay 3");
+values (4, 3, 5000, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 2, "Payment stay 3");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (5, 3, 500, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2, 2, "Payment stay 3");
+values (5, 3, 600, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2, 2, "Payment stay 3");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
 values (6, 4, 1000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 3, "Payment stay 4");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (7, 4, 1000, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 3, "Payment stay 4");
+values (7, 4, 400, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 3, "Payment stay 4");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (8, 4, 1000, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 4, "Payment stay 4");
+values (8, 4, 600, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 4, "Payment stay 4");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (9, 5, 4000, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 5, "Payment stay 5");
+values (9, 5, 350, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 5, "Payment stay 5");
 
 -- PAYMENT STAYS --
 

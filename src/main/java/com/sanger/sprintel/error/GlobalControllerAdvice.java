@@ -13,6 +13,7 @@ import com.sanger.sprintel.error.exceptions.PasswordNotMismatch;
 import com.sanger.sprintel.error.exceptions.RegisterNotClosedException;
 import com.sanger.sprintel.error.exceptions.RegisterNotOpenException;
 import com.sanger.sprintel.error.exceptions.SearchEntityNoResultException;
+import com.sanger.sprintel.error.exceptions.StayNotPaidException;
 import com.sanger.sprintel.error.exceptions.UserNotFoundException;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -37,7 +38,8 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(apiError);
 	}
 
-	@ExceptionHandler({ NewUserWithDifferentPasswordsException.class, PasswordNotMismatch.class })
+	@ExceptionHandler({ NewUserWithDifferentPasswordsException.class, PasswordNotMismatch.class,
+			StayNotPaidException.class })
 	public ResponseEntity<ApiError> handleBadRequest(Exception ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);

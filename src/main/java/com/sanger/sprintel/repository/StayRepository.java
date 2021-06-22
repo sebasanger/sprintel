@@ -16,4 +16,6 @@ public interface StayRepository extends JpaRepository<Stay, Long> {
 
     Optional<Set<Stay>> findAllByEntryDateBetweenOrOutDateBetween(LocalDate start, LocalDate end, LocalDate start2,
             LocalDate end2);
+
+    Optional<Stay> findByEntryDateAfterAndOutDateBefore(LocalDate start, LocalDate end);
 }

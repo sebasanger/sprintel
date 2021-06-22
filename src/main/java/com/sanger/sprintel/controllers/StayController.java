@@ -21,6 +21,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -44,8 +45,13 @@ public class StayController extends BaseController<Stay, Long, StayService> {
         return ResponseEntity.status(HttpStatus.CREATED).body(stayService.saveStay(newStay, user));
     }
 
+    @PutMapping("/finish/{id}")
+    public ResponseEntity<Stay> update(@PathVariable(required = true) Long id) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(stayService.finishStay(id));
+    }
+
     @PutMapping("/update")
-    public ResponseEntity<Stay> update(@Valid @RequestBody UpdateStayDto stay,
+    public ResponseEntity<Stay> finishStay(@Valid @RequestBody UpdateStayDto stay,
             @AuthenticationPrincipal UserEntity user) {
         return ResponseEntity.status(HttpStatus.CREATED).body(stayService.updateStay(stay, user));
     }

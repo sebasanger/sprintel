@@ -62,4 +62,12 @@ public class Payment {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
+    public Long getStayId() {
+        return this.stay.getId();
+    }
+
+    public Long getRegisterId() {
+        return this.register.getId();
+    }
+
 }

@@ -1,8 +1,11 @@
 package com.sanger.sprintel.services;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import com.sanger.sprintel.controllers.FilesController;
@@ -104,6 +107,27 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
             return this.repository
                     .findByCapacityGreaterThanEqualAndIdNotIn(checkRoomsAvailablesDto.getCapacity(), idRooms).get();
         }
+
+    }
+
+    public List<Room> checkRoomsStatus() {
+
+        List<Room> rooms = this.repository.findAll();
+        List<Stay> stays = new ArrayList<>();
+
+        rooms.forEach(room -> {
+            if (!room.isAvailable()) {
+                Optional<Stay> stay = stayRepository.findByEntryDateAfterAndOutDateBefore(LocalDate.now(),
+                        LocalDate.now());
+                if (stay.isPresent()) {
+                    stays.add(stay.get());
+                }
+            }
+        });
+        for (Stay stay : stays) {
+            System.out.println(stay);
+        }
+        return rooms;
 
     }
 
