@@ -16,6 +16,7 @@ import com.sanger.sprintel.model.Reason;
 import com.sanger.sprintel.model.Room;
 import com.sanger.sprintel.model.RoomPrice;
 import com.sanger.sprintel.model.Stay;
+import com.sanger.sprintel.model.StayStatus;
 import com.sanger.sprintel.model.UserEntity;
 import com.sanger.sprintel.repository.StayRepository;
 import com.sanger.sprintel.services.base.BaseService;
@@ -93,7 +94,7 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
 
         }
 
-        stay.setActive(createStayDto.isActive());
+        stay.setStatus(StayStatus.ACTIVE);
         stay.setPricePerDay(roomPrice.getPrice());
         stay.setEntryDate(createStayDto.getEntryDate());
         stay.setOutDate(createStayDto.getOutDate());
@@ -143,7 +144,7 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
                 .orElseThrow(() -> new EntityNotFoundException("Room price not found"));
         stay.setRoomPrice(roomPrice);
 
-        stay.setActive(updateStayDto.isActive());
+        stay.setStatus(StayStatus.ACTIVE);
         stay.setPricePerDay(roomPrice.getPrice());
         stay.setEntryDate(updateStayDto.getEntryDate());
         stay.setOutDate(updateStayDto.getOutDate());
@@ -159,7 +160,7 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
         System.out.println(stay.getTotalPayments());
         System.out.println(stay.getTotalToPay());
         if (stay.getTotalPayments() >= stay.getTotalToPay()) {
-            stay.setActive(false);
+            stay.setStatus(StayStatus.FINISHED);
         } else {
             throw new StayNotPaidException();
         }

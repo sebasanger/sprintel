@@ -64,6 +64,8 @@ public class Customer {
 
     private String cuit;
 
+    private String note;
+
     @ManyToMany(mappedBy = "customers", cascade = CascadeType.ALL)
     @JsonBackReference(value = "stay-customer")
     @EqualsAndHashCode.Exclude

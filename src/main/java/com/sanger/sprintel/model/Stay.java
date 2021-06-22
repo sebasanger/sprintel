@@ -9,6 +9,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -86,7 +88,9 @@ public class Stay {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate outDate;
 
-    private boolean active;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private StayStatus status;
 
     private LocalDate checkIn;
 

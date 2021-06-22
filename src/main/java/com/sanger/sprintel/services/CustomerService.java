@@ -1,12 +1,14 @@
 package com.sanger.sprintel.services;
 
 import java.util.Optional;
+import java.util.Set;
 
 import com.sanger.sprintel.dto.customer.CheckDniIsValidDto;
 import com.sanger.sprintel.dto.user.CheckEmailIsValidDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.model.Customer;
 import com.sanger.sprintel.model.InvoiceType;
+import com.sanger.sprintel.model.Stay;
 import com.sanger.sprintel.repository.CustomerRepository;
 import com.sanger.sprintel.services.base.BaseService;
 
@@ -47,5 +49,12 @@ public class CustomerService extends BaseService<Customer, Long, CustomerReposit
         }
 
         return this.repository.save(customer);
+    }
+
+    public Set<Stay> getCustomerStays(Long id) {
+
+        Customer customer = this.repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
+
+        return customer.getStays();
     }
 }

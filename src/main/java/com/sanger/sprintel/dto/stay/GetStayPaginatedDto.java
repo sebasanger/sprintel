@@ -3,6 +3,8 @@ package com.sanger.sprintel.dto.stay;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import com.sanger.sprintel.model.StayStatus;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,7 +25,7 @@ public class GetStayPaginatedDto {
 	private LocalDate checkOut;
 	private LocalDate entryDate;
 	private LocalDate outDate;
-	private Boolean active;
+	private StayStatus status;
 	private String reason;
 	private Double price;
 	private Double pricePerDay;
