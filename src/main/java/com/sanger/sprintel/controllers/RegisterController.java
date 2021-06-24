@@ -34,9 +34,10 @@ public class RegisterController extends BaseController<Register, Long, RegisterS
     @GetMapping("/paginate-filter")
     public ResponseEntity<?> paginateAndFilterCustomers(
             @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
-            @RequestParam(defaultValue = "") String filter) {
+            @RequestParam(defaultValue = "") String filter, @RequestParam(defaultValue = "") String start,
+            @RequestParam(defaultValue = "") String end) {
 
-        Page<Register> result = this.service.filterAndPaginateRegister(filter, pageable);
+        Page<Register> result = this.service.filterAndPaginateRegister(filter, pageable, start, end);
 
         if (result.isEmpty()) {
             throw new EntityNotFoundException();

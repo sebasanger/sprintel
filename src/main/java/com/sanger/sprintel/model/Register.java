@@ -61,11 +61,19 @@ public class Register {
     private LocalDateTime updatedAt;
 
     public Double getTotalPayments() {
-        return this.payments.stream().mapToDouble(Payment::getAmount).sum();
+        if (this.payments != null) {
+            return this.payments.stream().mapToDouble(Payment::getAmount).sum();
+        } else {
+            return 0D;
+        }
     }
 
     public Double getActualBalance() {
-        return getTotalPayments() + this.openMount;
+        if (this.getTotalPayments() != 0) {
+            return getTotalPayments() + this.openMount;
+        } else {
+            return this.openMount;
+        }
     }
 
     public void addPayment(Payment payment) {

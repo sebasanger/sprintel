@@ -332,22 +332,22 @@ values (1, 2);
 
 -- REGISTERS --
 insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at, close_mount) 
-values (1, 1, 5000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 800);
+values (1, 1, 5000 , NOW() - INTERVAL 8 DAY, 0, NOW() - INTERVAL 7 DAY, CURRENT_TIMESTAMP, 800);
 
 insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at, close_mount) 
-values (2, 3, 8000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1200);
+values (2, 3, 8000 , NOW() - INTERVAL 7 DAY, 0, NOW() - INTERVAL 6 DAY, CURRENT_TIMESTAMP, 1200);
 
 insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at, close_mount) 
-values (3, 5, 200 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2000);
+values (3, 5, 200 , NOW() - INTERVAL 5 DAY, 0, NOW() - INTERVAL 4 DAY, CURRENT_TIMESTAMP, 2000);
 
 insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at, close_mount) 
-values (4, 2, 10000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 2800);
+values (4, 2, 10000 , NOW() - INTERVAL 3 DAY, 0, NOW() - INTERVAL 2 DAY, CURRENT_TIMESTAMP, 2800);
 
 insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at, close_mount) 
-values (5, 3, 15000 , CURRENT_TIMESTAMP, 0, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 900);
+values (5, 3, 15000 , NOW() - INTERVAL 1 DAY, 0, NOW() - INTERVAL 1 DAY, CURRENT_TIMESTAMP, 900);
 
-insert into registers (id, user_id, open_mount, close_time, active, created_at, updated_at) 
-values (6, 1, 2500 , CURRENT_TIMESTAMP, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into registers (id, user_id, open_mount, active, created_at, updated_at) 
+values (6, 1, 2500 , 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- REGISTERS --
 

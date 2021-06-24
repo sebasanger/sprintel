@@ -1,5 +1,7 @@
 package com.sanger.sprintel.services;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import com.sanger.sprintel.dto.register.CloseRegisterDto;
@@ -20,12 +22,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RegisterService extends BaseService<Register, Long, RegisterRepository> {
 
-    public Page<Register> filterAndPaginateRegister(String filter, Pageable pageable) {
-        if (filter.length() == 0) {
-            return this.repository.findAll(pageable);
+    public Page<Register> filterAndPaginateRegister(String filter, Pageable pageable, String start, String end) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        if (start.length() > 0 && end.length() > 0) {
+            LocalDateTime startDate = LocalDateTime.parse(start, formatter);
+            LocalDateTime endDate = LocalDateTime.parse(end, formatter);
+
+            return this.repository.findByCreatedAtBetween(startDate, endDate, pageable);
         } else {
-            Double balace = Double.parseDouble(filter);
-            return this.repository.findByActualBalance(balace, pageable);
+            return this.repository.findAll(pageable);
         }
     }
 
@@ -34,6 +40,7 @@ public class RegisterService extends BaseService<Register, Long, RegisterReposit
             throw new RegisterNotClosedException();
         } else {
             register.setUser(user);
+            register.setActive(true);
             return repository.save(register);
         }
     }
