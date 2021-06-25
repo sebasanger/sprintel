@@ -1,6 +1,7 @@
 package com.sanger.sprintel.services;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.Set;
 
@@ -64,11 +65,16 @@ public class PaymentService extends BaseService<Payment, Long, PaymentRepository
 
     }
 
-    public Page<Payment> filterAndPaginatePayments(Date date, Pageable pageable) {
-        if (date == null) {
-            return this.repository.findAll(pageable);
+    public Page<Payment> filterAndPaginatePayments(String start, String end, Pageable pageable) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        if (start.length() > 0 && end.length() > 0) {
+            LocalDateTime startDate = LocalDateTime.parse(start, formatter);
+            LocalDateTime endDate = LocalDateTime.parse(end, formatter);
+
+            return this.repository.findByCreatedAtBetween(startDate, endDate, pageable);
         } else {
-            return this.repository.findByCreatedAt(date, pageable);
+            return this.repository.findAll(pageable);
         }
     }
 

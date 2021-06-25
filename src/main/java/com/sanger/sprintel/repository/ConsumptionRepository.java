@@ -1,6 +1,6 @@
 package com.sanger.sprintel.repository;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Set;
 
@@ -12,7 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ConsumptionRepository extends JpaRepository<Consumption, Long> {
-    Page<Consumption> findByCreatedAt(Date date, Pageable pageable);
+
+    Page<Consumption> findByCreatedAtBetween(LocalDateTime start, LocalDateTime end, Pageable pageable);
 
     Optional<Set<Consumption>> findByStay(Stay stay);
 }

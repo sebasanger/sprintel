@@ -1,6 +1,7 @@
 package com.sanger.sprintel.services;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -104,11 +105,17 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
 
     }
 
-    public Page<Stay> filterAndPaginateStays(Date date, Pageable pageable) {
-        if (date == null) {
-            return this.repository.findAll(pageable);
+    public Page<Stay> filterAndPaginateStays(String start, String end, Pageable pageable) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        if (start.length() > 0 && end.length() > 0) {
+            LocalDate startDate = LocalDate.parse(start, formatter);
+            LocalDate endDate = LocalDate.parse(end, formatter);
+
+            return this.repository.findByEntryDateBetweenOrOutDateBetween(startDate, endDate, startDate, endDate,
+                    pageable);
         } else {
-            return this.repository.findByCreatedAt(date, pageable);
+            return this.repository.findAll(pageable);
         }
     }
 

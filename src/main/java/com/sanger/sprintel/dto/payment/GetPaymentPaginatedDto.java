@@ -1,5 +1,7 @@
 package com.sanger.sprintel.dto.payment;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,5 +21,6 @@ public class GetPaymentPaginatedDto {
 	private Long registerId;
 	private Long stayId;
 	private String user;
+	private LocalDateTime createdAt;
 
 }

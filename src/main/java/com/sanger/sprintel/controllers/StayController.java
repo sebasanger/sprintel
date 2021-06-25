@@ -1,7 +1,5 @@
 package com.sanger.sprintel.controllers;
 
-import java.util.Date;
-
 import javax.validation.Valid;
 
 import com.sanger.sprintel.dto.stay.CreateStayDto;
@@ -59,9 +57,9 @@ public class StayController extends BaseController<Stay, Long, StayService> {
     @GetMapping("/paginate-filter")
     public ResponseEntity<?> paginateAndFilterPayments(
             @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
-            @RequestParam(required = false, name = "date") Date date) {
+            @RequestParam(defaultValue = "") String start, @RequestParam(defaultValue = "") String end) {
 
-        Page<Stay> result = stayService.filterAndPaginateStays(date, pageable);
+        Page<Stay> result = stayService.filterAndPaginateStays(start, end, pageable);
 
         if (result.isEmpty()) {
             throw new EntityNotFoundException();

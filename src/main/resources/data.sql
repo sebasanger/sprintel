@@ -86,28 +86,28 @@ insert into user_entity_roles (user_entity_id, roles) values (15,'USER');
 -- ROOM PRICES --
 
 insert into room_prices (id, price ,description, created_at, updated_at) 
-values (1, 1200, "Habitacion single",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (1, 1200, "Habitacion single",NOW() - INTERVAL 60 DAY ,NOW() - INTERVAL 30 DAY);
 
 insert into room_prices (id, price ,description, created_at, updated_at) 
-values (2, 2000, "Habitacion doble",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (2, 2000, "Habitacion doble",NOW() - INTERVAL 60 DAY ,NOW() - INTERVAL 30 DAY);
 
 insert into room_prices (id, price ,description, created_at, updated_at) 
-values (3, 2800, "Habitacion triple",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (3, 2800, "Habitacion triple",NOW() - INTERVAL 20 DAY ,NOW() - INTERVAL 15 DAY);
 
 insert into room_prices (id, price ,description, created_at, updated_at) 
-values (4, 3500, "Habitacion cuadruple",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (4, 3500, "Habitacion cuadruple",NOW() - INTERVAL 60 DAY ,NOW() - INTERVAL 10 DAY);
 
 insert into room_prices (id, price ,description, created_at, updated_at) 
 values (5, 1000, "Habitacion single viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
 insert into room_prices (id, price ,description, created_at, updated_at) 
-values (6, 1700, "Habitacion doble viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (6, 1700, "Habitacion doble viajante",NOW() - INTERVAL 60 DAY ,NOW() - INTERVAL 15 DAY);
 
 insert into room_prices (id, price ,description, created_at, updated_at) 
-values (7, 2500, "Habitacion triple viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (7, 2500, "Habitacion triple viajante",NOW() - INTERVAL 15 DAY ,NOW() - INTERVAL 1 DAY);
 
 insert into room_prices (id, price ,description, created_at, updated_at) 
-values (8, 3000, "Habitacion cuadruple viajante",CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (8, 3000, "Habitacion cuadruple viajante",NOW() - INTERVAL 18 DAY ,NOW() - INTERVAL 2 DAY);
 
 -- ROOM PRICES --
 
@@ -162,22 +162,22 @@ values (3, "Miselaneos");
 -- PRODUCTS --
 
 insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
-values (1, "Cocacola 1L", 80, "bzx852", 5, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (1, "Cocacola 1L", 80, "bzx852", 5, 1, 1, NOW() - INTERVAL 80 DAY, CURRENT_TIMESTAMP);
 
 insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
-values (2, "Cocacola 2L", 120, "kjkszpj", 3, 1, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (2, "Cocacola 2L", 120, "kjkszpj", 3, 1, 1, NOW() - INTERVAL 70 DAY, CURRENT_TIMESTAMP);
 
 insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
-values (3, "Pepsi 1L", 75, "aezakmi", 4, 1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (3, "Pepsi 1L", 75, "aezakmi", 4, 1, 2, NOW() - INTERVAL 60 DAY, CURRENT_TIMESTAMP);
 
 insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
-values (4, "Pepsi 2L", 110, "fullclip", 2, 1, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (4, "Pepsi 2L", 110, "fullclip", 2, 1, 2, NOW() - INTERVAL 60 DAY, CURRENT_TIMESTAMP);
 
 insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
-values (5, "Chocolatada", 70, "rocketman", 4, 1, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (5, "Chocolatada", 70, "rocketman", 4, 1, 4, NOW() - INTERVAL 60 DAY, CURRENT_TIMESTAMP);
 
 insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
-values (6, "Sadnwich completo", 90, "naturaltalent", 2,  2, 6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (6, "Sadnwich completo", 90, "naturaltalent", 2,  2, 6, NOW() - INTERVAL 60 DAY, CURRENT_TIMESTAMP);
 
 insert into products (id, name, price, code, stock, category_id, brand_id, created_at, updated_at) 
 values (7, "LLavero", 150, "hesoiam", 20,  3, 6, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
@@ -187,22 +187,22 @@ values (7, "LLavero", 150, "hesoiam", 20,  3, 6, CURRENT_TIMESTAMP, CURRENT_TIME
 -- ENTRY PRODUCTS --
 
 insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
-values (1, 1, 3, 50, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (1, 1, 3, 50, 1, NOW() - INTERVAL 28 DAY, CURRENT_TIMESTAMP);
 
 insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
-values (2, 2, 5, 90, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (2, 2, 5, 90, 2, NOW() - INTERVAL 20 DAY, CURRENT_TIMESTAMP);
 
 insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
-values (3, 4, 1, 45, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (3, 4, 1, 45, 1, NOW() - INTERVAL 15 DAY, CURRENT_TIMESTAMP);
 
 insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
-values (4, 3, 3, 70, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (4, 3, 3, 70, 3, NOW() - INTERVAL 10 DAY, CURRENT_TIMESTAMP);
 
 insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
-values (5, 1, 6, 56, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (5, 1, 6, 56, 2, NOW() - INTERVAL 10 DAY, CURRENT_TIMESTAMP);
 
 insert into entry_products (id, product_id, amount, buy_price, user_id, created_at, updated_at) 
-values (6, 1, 2, 54, 4, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (6, 1, 2, 54, 4, NOW() - INTERVAL 1 DAY, CURRENT_TIMESTAMP);
 
 -- ENTRY PRODUCTS --
 
@@ -249,37 +249,37 @@ values (5, "Otros");
 
 -- CUSTOMERS --
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at, invoice_type_id, note) 
-values (1, 'sebastian', 'sangermano', '1999-02-09', '41616608','seba_sanger@hotmail.com','402641','3755309633','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, "Great java and angular developer");
+values (1, 'sebastian', 'sangermano', '1999-02-09', '41616608','seba_sanger@hotmail.com','402641','3755309633','20416166081', '' ,NOW() - INTERVAL 10 DAY, NOW() - INTERVAL 1 DAY,1, "Great java and angular developer");
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
-values (2, 'gabriel', 'ramirez', '1997-10-10', '405080','Ramirez@hotmail.com','868686','3755309633','123123123', '1231231231' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (2, 'gabriel', 'ramirez', '1997-10-10', '405080','Ramirez@hotmail.com','868686','3755309633','123123123', '1231231231' ,NOW() - INTERVAL 15 DAY, NOW() - INTERVAL 1 DAY);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
-values (3, 'raul', 'ramirez', '1880-09-12', '404050','raul@hotmail.com','5656456','3755309633','12312323', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (3, 'raul', 'ramirez', '1880-09-12', '404050','raul@hotmail.com','5656456','3755309633','12312323', '' ,NOW() - INTERVAL 21 DAY, NOW() - INTERVAL 1 DAY);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at, invoice_type_id) 
-values (4, 'carlos', 'suarez', '1990-08-23', '201045','carlos@hotmail.com','456456456','123123123','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3);
+values (4, 'carlos', 'suarez', '1990-08-23', '201045','carlos@hotmail.com','456456456','123123123','20416166081', '' ,NOW() - INTERVAL 31 DAY, NOW() - INTERVAL 1 DAY,3);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
-values (5, 'antonio', 'roman', '1960-07-11', '201010','antonio@hotmail.com','45678642','456456456','20416166081', '123123123' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (5, 'antonio', 'roman', '1960-07-11', '201010','antonio@hotmail.com','45678642','456456456','20416166081', '123123123' ,NOW() - INTERVAL 21 DAY, NOW() - INTERVAL 1 DAY);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
-values (6, 'rodrigo', 'graziosetti', '1996-06-17', '506070','rodrigo@hotmail.com','456456678','456456456','20416166081', '543453453' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (6, 'rodrigo', 'graziosetti', '1996-06-17', '506070','rodrigo@hotmail.com','456456678','456456456','20416166081', '543453453' ,NOW() - INTERVAL 51 DAY, NOW() - INTERVAL 1 DAY);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
-values (7, 'alberto', 'torresetti', '1989-05-18', '124578','alberto@hotmail.com','456456456','456456456','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (7, 'alberto', 'torresetti', '1989-05-18', '124578','alberto@hotmail.com','456456456','456456456','20416166081', '' ,NOW() - INTERVAL 11 DAY, NOW() - INTERVAL 1 DAY);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at, invoice_type_id) 
-values (8, 'ramiro', 'montenegro', '1989-04-23', '123653','ramiro@hotmail.com','78978456','456456456','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2);
+values (8, 'ramiro', 'montenegro', '1989-04-23', '123653','ramiro@hotmail.com','78978456','456456456','20416166081', '' ,NOW() - INTERVAL 51 DAY, NOW() - INTERVAL 1 DAY,2);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
-values (9, 'juan', 'valdez', '1999-06-24', '859621','juan@hotmail.com','45645646','86786786','20416166081', '453453453' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (9, 'juan', 'valdez', '1999-06-24', '859621','juan@hotmail.com','45645646','86786786','20416166081', '453453453' ,NOW() - INTERVAL 31 DAY, NOW() - INTERVAL 1 DAY);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
-values (10, 'manuel', 'lopez', '1978-08-16', '535655','manuel@hotmail.com','78678676','786786786','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (10, 'manuel', 'lopez', '1978-08-16', '535655','manuel@hotmail.com','78678676','786786786','20416166081', '' ,NOW() - INTERVAL 21 DAY, NOW() - INTERVAL 1 DAY);
 
 insert into customers (id, name, surname, birthday,dni, email, phone, celphone, cuil, cuit, created_at, updated_at) 
-values (11, 'paco', 'antunez', '1987-04-25', '8545735','paco@hotmail.com','456456546','8767867867','20416166081', '' ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (11, 'paco', 'antunez', '1987-04-25', '8545735','paco@hotmail.com','456456546','8767867867','20416166081', '' ,NOW() - INTERVAL 11 DAY, NOW() - INTERVAL 1 DAY);
 -- CUSTOMERS --
 
 -- ROOMS --
@@ -355,7 +355,7 @@ values (6, 1, 2500 , 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 -- STAYS --
 --1
 insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at) 
-values (1, 1, 1, 1, "FINISHED",'2021-05-27', '2021-05-28', '2021-05-27', '2021-05-28', 1200, 1 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (1, 1, 1, 1, "FINISHED",NOW() - INTERVAL 5 DAY, NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 5 DAY, NOW() - INTERVAL 3 DAY,1200, 1 ,NOW() - INTERVAL 4 DAY, NOW() - INTERVAL 4 DAY);
 
 insert into customers_stays (stay_id, customer_id) 
 values (1, 2);
@@ -363,7 +363,7 @@ values (1, 2);
 --2
 
 insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at) 
-values (2, 2, 2, 2,"FINISHED",'2021-05-26', '2021-05-28', '2021-05-26', '2021-05-28', 2000, 2,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (2, 2, 2, 2,"FINISHED",NOW() - INTERVAL 4 DAY, NOW() - INTERVAL 2 DAY, NOW() - INTERVAL 4 DAY, NOW() - INTERVAL 2 DAY, 2000, 2,NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 3 DAY);
 
 insert into customers_stays (stay_id, customer_id) 
 values (2, 2);
@@ -373,7 +373,7 @@ values (2, 3);
 --3
 
 insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, price_per_day, total_guest, created_at, updated_at) 
-values (3, 3, 1, 3, "ACTIVE",'2021-05-27', '2021-05-29', '2021-05-27', 2500, 5 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (3, 3, 1, 3, "ACTIVE",NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 1 DAY, NOW() - INTERVAL 3 DAY, 2500, 5 ,NOW() - INTERVAL 2 DAY, NOW() - INTERVAL 2 DAY);
 
 insert into customers_stays (stay_id, customer_id) 
 values (3, 4);
@@ -390,72 +390,99 @@ values (3, 2);
 --4
 
 insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at) 
-values (4, 6, 3, 4, "ACTIVE",'2021-05-25', '2021-05-27', '2021-05-25', '2021-05-27', 1500, 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (4, 6, 3, 4, "ACTIVE",CURRENT_TIMESTAMP, NOW() + INTERVAL 2 DAY, CURRENT_TIMESTAMP, NOW() + INTERVAL 2 DAY, 1500, 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (4, 8);
 
 --5
-
 insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, price_per_day, total_guest, created_at, updated_at) 
-values (5, 7, 2, 2, "PENDING",'2021-06-18', '2021-06-20', '2021-06-18', 2000, 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+values (5, 7, 2, 2, "ACTIVE",CURRENT_TIMESTAMP, NOW() + INTERVAL 1 DAY, CURRENT_TIMESTAMP, 2000, 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 insert into customers_stays (stay_id, customer_id) 
 values (5, 9);
 insert into customers_stays (stay_id, customer_id) 
 values (5, 10);
+
+--6
+insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, price_per_day, total_guest, created_at, updated_at) 
+values (6, 4, 1, 2, "PENDING",NOW() + INTERVAL 1 DAY, NOW() + INTERVAL 4 DAY, 2000, 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers_stays (stay_id, customer_id) 
+values (6, 1);
+insert into customers_stays (stay_id, customer_id) 
+values (6, 3);
+
+
+--7
+insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, price_per_day, total_guest, created_at, updated_at) 
+values (7, 7, 3, 2, "PENDING",NOW() + INTERVAL 3 DAY, NOW() + INTERVAL 5 DAY, 2000, 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+insert into customers_stays (stay_id, customer_id) 
+values (7, 2);
+insert into customers_stays (stay_id, customer_id) 
+values (7, 5);
 -- STAYS --
 
 -- PAYMENT STAYS --
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (1, 1, 800, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 1, "Payment stay 1");
+values (1, 1, 800, 1, NOW() - INTERVAL 8 DAY, NOW() - INTERVAL 1 DAY,1, 1, "Payment stay 1");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (2, 2, 700, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2, 1, "Payment stay 2");
+values (2, 2, 700, 1, NOW() - INTERVAL 7 DAY, NOW() - INTERVAL 1 DAY,2, 1, "Payment stay 2");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (3, 2, 400, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 2, "Payment stay 2");
+values (3, 2, 400, 1, NOW() - INTERVAL 5 DAY, NOW() - INTERVAL 1 DAY,3, 2, "Payment stay 2");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (4, 3, 5000, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 2, "Payment stay 3");
+values (4, 3, 5000, 2, NOW() - INTERVAL 5 DAY, NOW() - INTERVAL 1 DAY,3, 2, "Payment stay 3");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (5, 3, 600, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,2, 2, "Payment stay 3");
+values (5, 3, 600, 1, NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 1 DAY,2, 2, "Payment stay 3");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (6, 4, 1000, 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 3, "Payment stay 4");
+values (6, 4, 1000, 1, NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 1 DAY,1, 3, "Payment stay 4");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (7, 4, 400, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 3, "Payment stay 4");
+values (7, 4, 400, 2, NOW() - INTERVAL 1 DAY, NOW() - INTERVAL 1 DAY,1, 3, "Payment stay 4");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (8, 4, 600, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,1, 4, "Payment stay 4");
+values (8, 4, 600, 3, NOW() - INTERVAL 1 DAY, NOW() - INTERVAL 1 DAY,1, 4, "Payment stay 4");
 
 insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
-values (9, 5, 350, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 5, "Payment stay 5");
+values (9, 5, 350, 3, NOW() - INTERVAL 1 DAY, NOW() - INTERVAL 1 DAY,3, 5, "Payment stay 5");
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (10, 5, 350, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 5, "Payment stay 6");
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (11, 5, 350, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 5, "Payment stay 6");
+
+insert into payments (id, stay_id ,amount , payment_method_id, created_at, updated_at, user_id, register_id, description) 
+values (12, 5, 350, 3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,3, 5, "Payment stay 6");
 
 -- PAYMENT STAYS --
 
 
 -- CONSUMPTIONS --
 insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
-values (1, 1, 1, 1, 2, 70, 70, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (1, 1, 1, 1, 2, 70, 70, NOW() - INTERVAL 7 DAY ,NOW() - INTERVAL 1 DAY);
 
 insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
-values (2, 4, 1, 2, 3, 110, 110, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (2, 4, 1, 2, 3, 110, 110, NOW() - INTERVAL 5 DAY ,NOW() - INTERVAL 1 DAY);
 
 insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
-values (3, 2, 2, 2, 1, 120,100, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (3, 2, 2, 2, 1, 120,100, NOW() - INTERVAL 2 DAY ,NOW() - INTERVAL 1 DAY);
 
 insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
-values (4, 3, 4, 1, 1, 75, 50, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (4, 3, 4, 1, 1, 75, 50, NOW() - INTERVAL 1 DAY ,CURRENT_TIMESTAMP);
 
 insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
 values (5, 4, 4, 2, 3, 100, 0, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
 
 insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
-values (6, 4, 5, 1, 1, 110, 20, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);
+values (6, 4, 5, 1, 1, 110, 20, NOW() - INTERVAL 1 DAY,CURRENT_TIMESTAMP);
 
 insert into consumptions (id, product_id, stay_id, user_id, amount, price,paid, created_at, updated_at) 
 values (7, 5, 5, 1, 2, 70, 70, CURRENT_TIMESTAMP ,CURRENT_TIMESTAMP);

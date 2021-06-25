@@ -1,6 +1,7 @@
 package com.sanger.sprintel.repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Optional;
 import java.util.Set;
@@ -18,4 +19,10 @@ public interface StayRepository extends JpaRepository<Stay, Long> {
             LocalDate end2);
 
     Optional<Stay> findByEntryDateAfterAndOutDateBefore(LocalDate start, LocalDate end);
+
+    Page<Stay> findByCreatedAtBetween(LocalDateTime start, LocalDateTime end, Pageable pageable);
+
+    Page<Stay> findByEntryDateBetweenOrOutDateBetween(LocalDate start, LocalDate end, LocalDate start2, LocalDate end2,
+            Pageable pageable);
+
 }

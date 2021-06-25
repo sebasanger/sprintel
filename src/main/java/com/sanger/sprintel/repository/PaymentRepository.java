@@ -1,6 +1,6 @@
 package com.sanger.sprintel.repository;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Set;
 
@@ -13,7 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
 
-    Page<Payment> findByCreatedAt(Date date, Pageable pageable);
+    Page<Payment> findByCreatedAtBetween(LocalDateTime start, LocalDateTime end, Pageable pageable);
 
     Optional<Set<Payment>> findByStay(Stay stay);
 }
