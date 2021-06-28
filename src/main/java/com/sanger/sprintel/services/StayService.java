@@ -105,15 +105,33 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
 
     }
 
-    public Page<Stay> filterAndPaginateStays(String start, String end, Pageable pageable) {
+    public Page<Stay> filterAndPaginateStays(String start, String end, String status, Pageable pageable) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        StayStatus statusSelected;
+        switch (status) {
+            case "ACTIVE":
+                statusSelected = StayStatus.ACTIVE;
+                break;
+            case "FINISHED":
+                statusSelected = StayStatus.FINISHED;
+                break;
+            case "PENDING":
+                statusSelected = StayStatus.PENDING;
+                break;
 
-        if (start.length() > 0 && end.length() > 0) {
+            default:
+                statusSelected = null;
+                break;
+        }
+
+        if (start.length() > 0 && end.length() > 0 && statusSelected != null) {
             LocalDate startDate = LocalDate.parse(start, formatter);
             LocalDate endDate = LocalDate.parse(end, formatter);
 
-            return this.repository.findByEntryDateBetweenOrOutDateBetween(startDate, endDate, startDate, endDate,
-                    pageable);
+            return this.repository.findByStatusAndEntryDateBetweenOrStatusAndOutDateBetween(statusSelected, startDate,
+                    endDate, statusSelected, startDate, endDate, pageable);
+        } else if (statusSelected != null) {
+            return this.repository.findByStatus(statusSelected, pageable);
         } else {
             return this.repository.findAll(pageable);
         }

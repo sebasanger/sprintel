@@ -57,9 +57,10 @@ public class StayController extends BaseController<Stay, Long, StayService> {
     @GetMapping("/paginate-filter")
     public ResponseEntity<?> paginateAndFilterPayments(
             @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable,
-            @RequestParam(defaultValue = "") String start, @RequestParam(defaultValue = "") String end) {
+            @RequestParam(defaultValue = "") String start, @RequestParam(defaultValue = "") String end,
+            @RequestParam(defaultValue = "") String status) {
 
-        Page<Stay> result = stayService.filterAndPaginateStays(start, end, pageable);
+        Page<Stay> result = stayService.filterAndPaginateStays(start, end, status, pageable);
 
         if (result.isEmpty()) {
             throw new EntityNotFoundException();
