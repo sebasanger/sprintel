@@ -29,6 +29,10 @@ public class CreateStayDto {
 
 	private Long reasonId;
 
+	private String origin;
+
+	private String destiny;
+
 	@NotNull
 	private Long roomPriceId;
 

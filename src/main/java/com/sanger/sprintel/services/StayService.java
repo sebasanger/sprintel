@@ -1,14 +1,17 @@
 package com.sanger.sprintel.services;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.sanger.sprintel.dto.stay.CreateStayDto;
 import com.sanger.sprintel.dto.stay.UpdateStayDto;
+import com.sanger.sprintel.error.exceptions.DateInvalidToCheckIn;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.error.exceptions.StayNotPaidException;
+import com.sanger.sprintel.error.exceptions.StayPastException;
 import com.sanger.sprintel.model.Customer;
 import com.sanger.sprintel.model.Payment;
 import com.sanger.sprintel.model.PaymentMethod;
@@ -41,20 +44,6 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
     public Stay saveStay(CreateStayDto createStayDto, UserEntity user) {
         Stay stay = new Stay();
         stay.setId(null);
-
-        // add the customers in the stay
-        if (createStayDto.getCustomers().isEmpty()) {
-            throw new EntityNotFoundException("Customers could not be empty");
-        }
-
-        Set<Customer> customersToAdd = new HashSet<>();
-
-        createStayDto.getCustomers().forEach(customer -> {
-            Customer customerSaved = customerService.saveCustomer(customer);
-            customersToAdd.add(customerSaved);
-        });
-
-        stay.setCustomers(customersToAdd);
 
         // Set room by id
         Room room = roomService.findById(createStayDto.getRoomId())
@@ -95,11 +84,28 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
 
         }
 
-        stay.setStatus(StayStatus.ACTIVE);
+        stay.setStatus(this.checkStayStatusByDate(createStayDto.getEntryDate()));
+
+        stay.setDestiny(createStayDto.getDestiny());
+        stay.setOrigin(createStayDto.getOrigin());
         stay.setPricePerDay(roomPrice.getPrice());
         stay.setEntryDate(createStayDto.getEntryDate());
         stay.setOutDate(createStayDto.getOutDate());
         stay.setTotalGuest(createStayDto.getTotalGuest());
+
+        // add the customers in the stay
+        if (createStayDto.getCustomers().isEmpty()) {
+            throw new EntityNotFoundException("Customers could not be empty");
+        }
+
+        Set<Customer> customersToAdd = new HashSet<>();
+
+        createStayDto.getCustomers().forEach(customer -> {
+            Customer customerSaved = customerService.saveCustomer(customer);
+            customersToAdd.add(customerSaved);
+        });
+
+        stay.setCustomers(customersToAdd);
 
         return save(stay);
 
@@ -169,7 +175,10 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
                 .orElseThrow(() -> new EntityNotFoundException("Room price not found"));
         stay.setRoomPrice(roomPrice);
 
-        stay.setStatus(StayStatus.ACTIVE);
+        stay.setStatus(this.checkStayStatusByDate(updateStayDto.getEntryDate()));
+
+        stay.setDestiny(updateStayDto.getDestiny());
+        stay.setOrigin(updateStayDto.getOrigin());
         stay.setPricePerDay(roomPrice.getPrice());
         stay.setEntryDate(updateStayDto.getEntryDate());
         stay.setOutDate(updateStayDto.getOutDate());
@@ -182,14 +191,42 @@ public class StayService extends BaseService<Stay, Long, StayRepository> {
     public Stay finishStay(Long id) {
         Stay stay = this.repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Not have stay with this id"));
-        System.out.println(stay.getTotalPayments());
-        System.out.println(stay.getTotalToPay());
+
         if (stay.getTotalPayments() >= stay.getTotalToPay()) {
             stay.setStatus(StayStatus.FINISHED);
+            stay.setCheckOut(LocalDateTime.now());
         } else {
             throw new StayNotPaidException();
         }
         return save(stay);
+
+    }
+
+    public Stay checkinStay(Long id) {
+        Stay stay = this.repository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Not have stay with this id"));
+
+        if (stay.getEntryDate().compareTo(LocalDate.now()) == 0) {
+            stay.setStatus(StayStatus.ACTIVE);
+            stay.setCheckIn(LocalDateTime.now());
+        } else {
+            throw new DateInvalidToCheckIn();
+        }
+        return save(stay);
+
+    }
+
+    private StayStatus checkStayStatusByDate(LocalDate stayDate) {
+        StayStatus status = null;
+        if (stayDate.compareTo(LocalDate.now()) == 0) {
+            status = StayStatus.ACTIVE;
+        } else if (stayDate.compareTo(LocalDate.now()) > 0) {
+            status = StayStatus.PENDING;
+        } else if (stayDate.compareTo(LocalDate.now()) < 0) {
+            throw new StayPastException();
+        }
+
+        return status;
 
     }
 

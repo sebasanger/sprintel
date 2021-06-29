@@ -354,16 +354,16 @@ values (6, 1, 2500 , 1, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- STAYS --
 --1
-insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at) 
-values (1, 1, 1, 1, "FINISHED",NOW() - INTERVAL 5 DAY, NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 5 DAY, NOW() - INTERVAL 3 DAY,1200, 1 ,NOW() - INTERVAL 4 DAY, NOW() - INTERVAL 4 DAY);
+insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at, destiny, origin) 
+values (1, 1, 1, 1, "FINISHED",NOW() - INTERVAL 5 DAY, NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 5 DAY, NOW() - INTERVAL 3 DAY,1200, 1 ,NOW() - INTERVAL 4 DAY, NOW() - INTERVAL 4 DAY,"Posadas Misiones", "Corrientes");
 
 insert into customers_stays (stay_id, customer_id) 
 values (1, 2);
 
 --2
 
-insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at) 
-values (2, 2, 2, 2,"FINISHED",NOW() - INTERVAL 4 DAY, NOW() - INTERVAL 2 DAY, NOW() - INTERVAL 4 DAY, NOW() - INTERVAL 2 DAY, 2000, 2,NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 3 DAY);
+insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at, origin) 
+values (2, 2, 2, 2,"FINISHED",NOW() - INTERVAL 4 DAY, NOW() - INTERVAL 2 DAY, NOW() - INTERVAL 4 DAY, NOW() - INTERVAL 2 DAY, 2000, 2,NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 3 DAY, "Iguazu");
 
 insert into customers_stays (stay_id, customer_id) 
 values (2, 2);
@@ -372,8 +372,8 @@ values (2, 3);
 
 --3
 
-insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, price_per_day, total_guest, created_at, updated_at) 
-values (3, 3, 1, 3, "ACTIVE",NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 1 DAY, NOW() - INTERVAL 3 DAY, 2500, 5 ,NOW() - INTERVAL 2 DAY, NOW() - INTERVAL 2 DAY);
+insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, price_per_day, total_guest, created_at, updated_at, destiny) 
+values (3, 3, 1, 3, "ACTIVE",NOW() - INTERVAL 3 DAY, NOW() - INTERVAL 1 DAY, NOW() - INTERVAL 3 DAY, 2500, 5 ,NOW() - INTERVAL 2 DAY, NOW() - INTERVAL 2 DAY, "Catamarca");
 
 insert into customers_stays (stay_id, customer_id) 
 values (3, 4);
@@ -389,15 +389,15 @@ values (3, 2);
 
 --4
 
-insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at) 
-values (4, 6, 3, 4, "ACTIVE",CURRENT_TIMESTAMP, NOW() + INTERVAL 2 DAY, CURRENT_TIMESTAMP, NOW() + INTERVAL 2 DAY, 1500, 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, check_out, price_per_day, total_guest, created_at, updated_at, destiny, origin) 
+values (4, 6, 3, 4, "ACTIVE",CURRENT_TIMESTAMP, NOW() + INTERVAL 2 DAY, CURRENT_TIMESTAMP, NOW() + INTERVAL 2 DAY, 1500, 1,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, "Brasil", "Buenos Aires");
 
 insert into customers_stays (stay_id, customer_id) 
 values (4, 8);
 
 --5
-insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, price_per_day, total_guest, created_at, updated_at) 
-values (5, 7, 2, 2, "ACTIVE",CURRENT_TIMESTAMP, NOW() + INTERVAL 1 DAY, CURRENT_TIMESTAMP, 2000, 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, check_in, price_per_day, total_guest, created_at, updated_at, destiny, origin) 
+values (5, 7, 2, 2, "ACTIVE",CURRENT_TIMESTAMP, NOW() + INTERVAL 1 DAY, CURRENT_TIMESTAMP, 2000, 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, "Mendoza", "Jujuy");
 
 insert into customers_stays (stay_id, customer_id) 
 values (5, 9);
@@ -405,8 +405,8 @@ insert into customers_stays (stay_id, customer_id)
 values (5, 10);
 
 --6
-insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, price_per_day, total_guest, created_at, updated_at) 
-values (6, 4, 1, 2, "PENDING",NOW() + INTERVAL 1 DAY, NOW() + INTERVAL 4 DAY, 2000, 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+insert into stays (id, room_id, reason_id, room_price_id, status, entry_date, out_date, price_per_day, total_guest, created_at, updated_at, destiny, origin) 
+values (6, 4, 1, 2, "PENDING",NOW() + INTERVAL 1 DAY, NOW() + INTERVAL 4 DAY, 2000, 2 ,CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, "Tierra del fuego", "La rioja");
 
 insert into customers_stays (stay_id, customer_id) 
 values (6, 1);

@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.sanger.sprintel.error.exceptions.DateInvalidToCheckIn;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.error.exceptions.FindEntityByIdNotFoundException;
 import com.sanger.sprintel.error.exceptions.NewUserWithDifferentPasswordsException;
@@ -14,6 +15,7 @@ import com.sanger.sprintel.error.exceptions.RegisterNotClosedException;
 import com.sanger.sprintel.error.exceptions.RegisterNotOpenException;
 import com.sanger.sprintel.error.exceptions.SearchEntityNoResultException;
 import com.sanger.sprintel.error.exceptions.StayNotPaidException;
+import com.sanger.sprintel.error.exceptions.StayPastException;
 import com.sanger.sprintel.error.exceptions.UserNotFoundException;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -39,7 +41,7 @@ public class GlobalControllerAdvice extends ResponseEntityExceptionHandler {
 	}
 
 	@ExceptionHandler({ NewUserWithDifferentPasswordsException.class, PasswordNotMismatch.class,
-			StayNotPaidException.class })
+			StayNotPaidException.class, StayPastException.class, DateInvalidToCheckIn.class })
 	public ResponseEntity<ApiError> handleBadRequest(Exception ex) {
 		ApiError apiError = new ApiError(HttpStatus.BAD_REQUEST, ex.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(apiError);

@@ -44,8 +44,13 @@ public class StayController extends BaseController<Stay, Long, StayService> {
     }
 
     @PutMapping("/finish/{id}")
-    public ResponseEntity<Stay> update(@PathVariable(required = true) Long id) {
+    public ResponseEntity<Stay> finish(@PathVariable(required = true) Long id) {
         return ResponseEntity.status(HttpStatus.CREATED).body(stayService.finishStay(id));
+    }
+
+    @PutMapping("/checkIn/{id}")
+    public ResponseEntity<Stay> checkIn(@PathVariable(required = true) Long id) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(stayService.checkinStay(id));
     }
 
     @PutMapping("/update")

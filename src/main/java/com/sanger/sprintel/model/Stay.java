@@ -80,6 +80,12 @@ public class Stay {
 
     private Double pricePerDay;
 
+    @Column(nullable = true)
+    private String origin;
+
+    @Column(nullable = true)
+    private String destiny;
+
     @Column(nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate entryDate;
@@ -92,9 +98,9 @@ public class Stay {
     @Column(name = "status")
     private StayStatus status;
 
-    private LocalDate checkIn;
+    private LocalDateTime checkIn;
 
-    private LocalDate checkOut;
+    private LocalDateTime checkOut;
 
     @CreatedDate
     private LocalDateTime createdAt;

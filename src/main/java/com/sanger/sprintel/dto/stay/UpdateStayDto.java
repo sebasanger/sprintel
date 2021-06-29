@@ -28,6 +28,10 @@ public class UpdateStayDto {
 	@NotNull
 	private Long roomId;
 
+	private String origin;
+
+	private String destiny;
+
 	private Long paymentMethodId;
 
 	private Long reasonId;

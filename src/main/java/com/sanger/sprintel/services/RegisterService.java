@@ -50,6 +50,7 @@ public class RegisterService extends BaseService<Register, Long, RegisterReposit
             Register registerUpdate = this.findActiveRegister();
             registerUpdate.setCloseMount(closeRegisterDto.getCloseMount());
             registerUpdate.setActive(false);
+            registerUpdate.setCloseTime(LocalDateTime.now());
 
             return repository.save(registerUpdate);
         } else {

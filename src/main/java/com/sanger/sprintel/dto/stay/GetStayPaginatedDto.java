@@ -21,8 +21,8 @@ public class GetStayPaginatedDto {
 	private Long id;
 	private String room;
 	private Short totalGuest;
-	private LocalDate checkIn;
-	private LocalDate checkOut;
+	private LocalDateTime checkIn;
+	private LocalDateTime checkOut;
 	private LocalDate entryDate;
 	private LocalDate outDate;
 	private StayStatus status;
