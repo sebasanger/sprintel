@@ -2,6 +2,8 @@ package com.sanger.sprintel.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,13 +30,16 @@ public class Image {
 
     private int size;
 
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private ImageType type;
 
     public String title;
 
-    public Image(@NotNull String path, String title) {
+    public Image(@NotNull String path, String title, ImageType imageType) {
         this.path = path;
         this.title = title;
+        this.type = imageType;
+
     }
 
 }

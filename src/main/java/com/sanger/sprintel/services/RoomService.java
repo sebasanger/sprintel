@@ -10,9 +10,11 @@ import java.util.Set;
 
 import com.sanger.sprintel.controllers.FilesController;
 import com.sanger.sprintel.dto.room.CheckRoomsAvailablesDto;
+import com.sanger.sprintel.dto.room.GetRoomImagesDto;
 import com.sanger.sprintel.dto.user.ChangeImageResponseDto;
 import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.model.Image;
+import com.sanger.sprintel.model.ImageType;
 import com.sanger.sprintel.model.Room;
 import com.sanger.sprintel.model.Stay;
 import com.sanger.sprintel.repository.RoomRepository;
@@ -39,7 +41,7 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
 
     private final StayRepository stayRepository;
 
-    public ChangeImageResponseDto uploadAvatarAndDeleteOld(MultipartFile file, Long id, String title) {
+    public ChangeImageResponseDto uploadImageAndDeleteOld(MultipartFile file, Long id, String title) {
         System.out.println(file.getContentType());
         if (file.isEmpty()) {
             throw new StorageException("Image not found");
@@ -61,7 +63,7 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
             images = room.getImages();
         }
 
-        images.add(new Image(urlImage, title));
+        images.add(new Image(urlImage, title, ImageType.ROOM));
 
         room.setImages(images);
 
@@ -128,6 +130,22 @@ public class RoomService extends BaseService<Room, Long, RoomRepository> {
             System.out.println(stay);
         }
         return rooms;
+
+    }
+
+    public List<GetRoomImagesDto> getAllImages() {
+        List<Room> rooms = this.repository.findAll();
+        List<GetRoomImagesDto> roomImages = new ArrayList<>();
+        rooms.stream().forEach(room -> {
+            if (!room.getImages().isEmpty()) {
+                GetRoomImagesDto roomImage = new GetRoomImagesDto();
+                roomImage.setImages(room.getImages());
+                roomImage.setNumber(room.getNumber());
+                roomImages.add(roomImage);
+            }
+        });
+
+        return roomImages;
 
     }
 

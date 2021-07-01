@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.validation.Valid;
 
 import com.sanger.sprintel.dto.room.CheckRoomsAvailablesDto;
+import com.sanger.sprintel.dto.room.GetRoomImagesDto;
 import com.sanger.sprintel.dto.user.ChangeImageResponseDto;
 import com.sanger.sprintel.model.Room;
 import com.sanger.sprintel.services.RoomService;
@@ -36,7 +37,7 @@ public class RoomController extends BaseController<Room, Long, RoomService> {
     public ResponseEntity<ChangeImageResponseDto> nuevoProducto(@RequestParam("file") MultipartFile file,
             @RequestParam("title") String title, @PathVariable Long id) {
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(roomService.uploadAvatarAndDeleteOld(file, id, title));
+        return ResponseEntity.status(HttpStatus.CREATED).body(roomService.uploadImageAndDeleteOld(file, id, title));
 
     }
 
@@ -61,6 +62,14 @@ public class RoomController extends BaseController<Room, Long, RoomService> {
     public ResponseEntity<List<Room>> roomStatus() {
 
         List<Room> result = this.roomService.checkRoomsStatus();
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
+    }
+
+    @GetMapping("/images")
+    public ResponseEntity<List<GetRoomImagesDto>> getAllRoomImages() {
+
+        List<GetRoomImagesDto> result = this.roomService.getAllImages();
+
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
     }
 }
