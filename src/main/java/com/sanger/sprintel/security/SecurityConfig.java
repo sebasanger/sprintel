@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/reset-password/**").permitAll()//
 				.antMatchers("/user/**").hasRole("ADMIN")//
 				.antMatchers("/user/changePassword").permitAll()//
-				.antMatchers("/auth/validate-acount").permitAll()//
+				.antMatchers("/auth/validate-acount/**").permitAll()//
 				.antMatchers(HttpMethod.GET, "/files/**").permitAll()//
 				.anyRequest().authenticated();
 

@@ -6,7 +6,9 @@ import com.sanger.sprintel.dto.auth.AuthenticationResponse;
 import com.sanger.sprintel.dto.auth.LoginRequestDto;
 import com.sanger.sprintel.dto.auth.RefreshTokenRequestDto;
 import com.sanger.sprintel.dto.auth.RefreshTokenResponse;
+import com.sanger.sprintel.dto.user.ResendEmailVerificationDto;
 import com.sanger.sprintel.dto.user.UserDtoConverter;
+import com.sanger.sprintel.error.exceptions.EntityNotFoundException;
 import com.sanger.sprintel.jwt.JwtProvider;
 import com.sanger.sprintel.model.UserEntity;
 import com.sanger.sprintel.repository.UserEntityRepository;
@@ -28,6 +30,7 @@ import lombok.AllArgsConstructor;
 public class AuthService {
 
         private final RefreshTokenService refreshTokenService;
+        private final VerificationTokenService verificationTokenService;
         private final UserEntityRepository userRepository;
         private final AuthenticationManager authenticationManager;
         private final UserDtoConverter userDtoConverter;
@@ -68,5 +71,15 @@ public class AuthService {
         public boolean isLoggedIn() {
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
                 return !(authentication instanceof AnonymousAuthenticationToken) && authentication.isAuthenticated();
+        }
+
+        public void resendEmailVerification(ResendEmailVerificationDto resendEmailVerificationDto) {
+                UserEntity user = userRepository.findById(resendEmailVerificationDto.getId())
+                                .orElseThrow(() -> new EntityNotFoundException("User not found"));
+                if (!user.isEnabled()) {
+                        verificationTokenService.sendEmailVerification(user,
+                                        resendEmailVerificationDto.getUrlRedirect());
+                }
+
         }
 }

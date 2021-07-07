@@ -117,7 +117,6 @@ public class UserController {
 	public ResponseEntity<ChangeImageResponseDto> nuevoProducto(@RequestParam("file") MultipartFile file,
 			@PathVariable Long id) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(userEntityService.uploadAvatarAndDeleteOld(file, id));
-
 	}
 
 	@PostMapping("/checkEmailIsValid")

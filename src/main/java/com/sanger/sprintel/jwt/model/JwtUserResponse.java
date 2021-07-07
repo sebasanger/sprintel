@@ -15,8 +15,8 @@ public class JwtUserResponse extends GetUsersDto {
 
     @Builder(builderMethodName = "jwtUserResponseBuilder")
     public JwtUserResponse(Long id, String username, String avatar, String fullName, String email, Set<String> roles,
-            String token) {
-        super(id, username, avatar, fullName, email, roles);
+            String token, Boolean enabled) {
+        super(id, username, avatar, fullName, email, roles, enabled);
         this.token = token;
     }
 

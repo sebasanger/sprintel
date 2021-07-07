@@ -9,6 +9,7 @@ import com.sanger.sprintel.dto.auth.RefreshTokenResponse;
 import com.sanger.sprintel.dto.auth.ValidateUserDto;
 import com.sanger.sprintel.dto.auth.ValidateUserTokenDto;
 import com.sanger.sprintel.dto.user.GetUsersDto;
+import com.sanger.sprintel.dto.user.ResendEmailVerificationDto;
 import com.sanger.sprintel.jwt.JwtProvider;
 import com.sanger.sprintel.model.UserEntity;
 import com.sanger.sprintel.services.AuthService;
@@ -71,6 +72,13 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(verificationTokenService.validateVerificationToken(validation));
 
+    }
+
+    @PutMapping("/resend-email")
+    public ResponseEntity<Void> resendVerification(
+            @Valid @RequestBody ResendEmailVerificationDto resendEmailVerificationDto) {
+        authService.resendEmailVerification(resendEmailVerificationDto);
+        return ResponseEntity.noContent().build();
     }
 
 }

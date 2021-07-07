@@ -1,6 +1,7 @@
 package com.sanger.sprintel.dto.user;
 
-import java.util.Set;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,16 +11,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetUsersDto {
+@Builder
+public class ResendEmailVerificationDto {
+
+	@NotNull
 	private Long id;
-	private String username;
-	private String avatar;
-	private String fullName;
-	private String email;
-	private Set<String> roles;
-	private Boolean enabled;
+
+	@NotBlank
+	private String urlRedirect;
 
 }

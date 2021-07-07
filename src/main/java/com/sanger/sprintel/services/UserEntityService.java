@@ -45,12 +45,6 @@ public class UserEntityService extends BaseService<UserEntity, Long, UserEntityR
 
 	private static final List<String> contentTypes = Arrays.asList("image/png", "image/jpeg", "image/gif");
 
-	/**
-	 * Nos permite buscar un usuario por su nombre de usuario
-	 * 
-	 * @param username
-	 * @return
-	 */
 	public Optional<UserEntity> findUserByUsername(String username) {
 		return this.repository.findByUsername(username);
 	}
@@ -60,12 +54,6 @@ public class UserEntityService extends BaseService<UserEntity, Long, UserEntityR
 				pageable);
 	}
 
-	/**
-	 * Nos permite crear un nuevo UserEntity con rol USER
-	 * 
-	 * @param newUser
-	 * @return
-	 */
 	public UserEntity newUser(CreateUserDto newUser) {
 
 		UserEntity userEntity = userDtoConverter.convertCreateUserDtoToUserEntity(newUser);

@@ -40,14 +40,14 @@ insert into user_entity_roles (user_entity_id, roles) values (6,'USER');
 
 -- Contraseña: Angelmartinez1
 insert into users (id, full_name, email, username, password, avatar, created_at, last_password_change_at,enabled) 
-values (7, 'Gabriel Perez', 'gper@hotmail.com','gabper','$2a$10$9joAo0/q0z2vYgdKUYQ7kuahy7xRBRZF9GNkmOsd6hbCvqFmH6Ueu','',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,true);
+values (7, 'Gabriel Perez', 'gper@hotmail.com','gper@hotmail.com','$2a$10$9joAo0/q0z2vYgdKUYQ7kuahy7xRBRZF9GNkmOsd6hbCvqFmH6Ueu','',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,false);
 
 insert into user_entity_roles (user_entity_id, roles) values (7,'USER');
 insert into user_entity_roles (user_entity_id, roles) values (7,'ADMIN');
 
 -- Contraseña: Angelmartinez1
 insert into users (id, full_name, email, username, password, avatar, created_at, last_password_change_at,enabled) 
-values (9, 'Carlos Lopez', 'carlopez@hotmail.com','clop','$2a$10$9joAo0/q0z2vYgdKUYQ7kuahy7xRBRZF9GNkmOsd6hbCvqFmH6Ueu','',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,true);
+values (9, 'Carlos Lopez', 'carlopez@hotmail.com','carlopez@hotmail.com','$2a$10$9joAo0/q0z2vYgdKUYQ7kuahy7xRBRZF9GNkmOsd6hbCvqFmH6Ueu','',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,true);
 
 insert into user_entity_roles (user_entity_id, roles) values (9,'USER');
 
@@ -57,7 +57,7 @@ values (10, 'Gabriel Sangermano', 'seba@hotmail.com','seba@hotmail.com','$2a$10$
 insert into user_entity_roles (user_entity_id, roles) values (10,'USER');
 
 insert into users (id, full_name, email, username, password, avatar, created_at, last_password_change_at,enabled) 
-values (11, 'Ricardo Marin', 'riki@hotmail.com','riki@hotmail.com','$2a$10$DBJhFdEGTeAqoLLsGfXwYObYXpt/amU0wpsRtKQtwJdC5n.MOXgxC','',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,true);
+values (11, 'Ricardo Marin', 'riki@hotmail.com','riki@hotmail.com','$2a$10$DBJhFdEGTeAqoLLsGfXwYObYXpt/amU0wpsRtKQtwJdC5n.MOXgxC','',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP,false);
       
 insert into user_entity_roles (user_entity_id, roles) values (11,'USER');
 
